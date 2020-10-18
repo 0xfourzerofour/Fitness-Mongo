@@ -107,7 +107,6 @@ router.route('/add').post(upload.single('image'), async (req, res) => {
   const username = req.body.username;
   const lowered = username.toLowerCase();
   const imageUrl = req.file.path;
-  const bio = req.body.bio;
 
   const salt = await bcrypt.genSalt(10);
   const hashPassword = await bcrypt.hash(req.body.password, salt);
@@ -115,8 +114,7 @@ router.route('/add').post(upload.single('image'), async (req, res) => {
   const newUser = new User({
     username: lowered,
     password: hashPassword,
-    bio,
-    following: [],
+
     imageUrl,
   });
 

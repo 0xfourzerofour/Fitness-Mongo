@@ -13,8 +13,6 @@ var userSchema = new Schema(
     password: String,
     imageUrl: String,
 
-    bio: String,
-    following: Array,
   },
   {
     timestamps: true,
