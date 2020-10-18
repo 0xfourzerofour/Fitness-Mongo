@@ -2,6 +2,8 @@ const router = require('express').Router();
 let post = require('../models/post.model');
 let User = require('../models/user.model');
 
+//Post routes from previous project 
+
 //This is where we import our verify middleware that allows us
 //to check and see if the users passes a valid auth-token to the
 //request.
