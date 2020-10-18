@@ -1,29 +1,29 @@
 import React, { useState } from "react"
-import "./LoginForm.css"
+import "./RegisterForm.css"
 import Modal from "react-bootstrap/Modal"
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
 
-const LoginForm = ({
-  showLoginForm,
-  setShowLoginForm,
+const RegisterForm = ({
+  showRegisterForm,
   setShowRegisterForm,
+  setShowLoginForm,
 }) => {
   const [usernameVal, setUsernameVal] = useState("")
   const [passwordVal, setPasswordVal] = useState("")
 
   const handleClose = () => {
-    setShowLoginForm(false)
+    setShowRegisterForm(false)
   }
 
-  const handleRegisterClick = () => {
-    setShowLoginForm(false)
-    setShowRegisterForm(true)
+  const handleLoginClick = () => {
+    setShowRegisterForm(false)
+    setShowLoginForm(true)
   }
 
-  const handleLogin = async (event) => {
+  const handleRegister = async (event) => {
     event.preventDefault()
-    // login API calls go here
+    // register API calls go here
     handleClose()
   }
 
@@ -36,12 +36,12 @@ const LoginForm = ({
   }
 
   return (
-    <Modal show={showLoginForm} onHide={handleClose}>
+    <Modal show={showRegisterForm} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Login</Modal.Title>
+        <Modal.Title>Register</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form onSubmit={handleLogin}>
+        <Form onSubmit={handleRegister}>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Username</Form.Label>
             <Form.Control
@@ -64,13 +64,13 @@ const LoginForm = ({
             </Form.Text>
           </Form.Group>
           <p>
-            No account?{" "}
-            <span className="register-link" onClick={handleRegisterClick}>
-              register
+            Already have an account?{" "}
+            <span className="register-link" onClick={handleLoginClick}>
+              login
             </span>
           </p>
           <Button variant="primary" type="submit">
-            Login
+            Register
           </Button>
         </Form>
       </Modal.Body>
@@ -78,4 +78,4 @@ const LoginForm = ({
   )
 }
 
-export default LoginForm
+export default RegisterForm
