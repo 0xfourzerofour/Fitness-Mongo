@@ -17,7 +17,7 @@ function App() {
     }
   }, [])
   const [showLoginForm, setShowLoginForm] = useState(false)
-  const [showRegisterForm, setShowRegisterForm] = useState(true)
+  const [showRegisterForm, setShowRegisterForm] = useState(false)
   return (
     <div className="App">
       <Topnav
@@ -37,6 +37,7 @@ function App() {
           setShowLoginForm={setShowLoginForm}
         />
       ) : null}
+      <Home />
     </div>
   )
 }

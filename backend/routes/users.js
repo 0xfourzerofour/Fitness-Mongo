@@ -10,14 +10,14 @@ let User = require('../models/user.model')
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, './images/')
+    cb(null, 'images')
   },
   filename: function (req, file, cb) {
-    cb(null, new Date().toISOString() + file.originalname)
+    cb(null, file.originalname)
   },
 })
 
-const upload = multer({ storage: storage })
+const upload = multer({ storage })
 
 //This is a simply API request that takes the request username and returns all the detail
 //for the requested user. (Exluding Hashed passwords)
@@ -104,7 +104,6 @@ router.route('/search').post(verify, (req, res) => {
 //we are able to get the image path from the uploaded image as we are using
 //multer as a middleware to create the path and store the file before the request is processed
 router.route('/add').post(upload.single('image'), async (req, res) => {
-  console.log(req)
   const username = req.body.username
   const lowered = username.toLowerCase()
   const imageUrl = req.file.path

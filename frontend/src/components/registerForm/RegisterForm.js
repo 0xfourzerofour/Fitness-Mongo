@@ -22,11 +22,12 @@ const RegisterForm = ({
     event.preventDefault()
     try {
       if (passwordVal === confirmPasswordVal) {
-        await userService.create({
-          username: usernameVal,
-          password: passwordVal,
-          file: file,
-        })
+        console.log(file)
+        let payload = new FormData()
+        payload.append('username', usernameVal)
+        payload.append('password', passwordVal)
+        payload.append('image', file)
+        await userService.create(payload)
         setRegisterSuccess(true)
         setMessageText('Account created!')
         setTimeout(() => {
@@ -38,17 +39,7 @@ const RegisterForm = ({
       }
     } catch (error) {
       setRegisterSuccess(false)
-      if (error.message === "Passwords don't match!") {
-        setMessageText(error.message)
-      } else if (error.message === 'Bad password!') {
-        setMessageText(error.message)
-      } else if (
-        error.response.data.error.includes('is longer than the maximum')
-      ) {
-        setMessageText('Username too long!')
-      } else if (error.response.data.error.includes('to be unique')) {
-        setMessageText('Username taken!')
-      }
+      console.log(error)
     }
   }
 
@@ -74,10 +65,7 @@ const RegisterForm = ({
   }
 
   const handleImageChange = (event) => {
-    if (event.target.files && event.target.files[0]) {
-      let img = event.target.files[0]
-      setFile(URL.createObjectURL(img))
-    }
+    setFile(event.target.files[0])
   }
 
   return (
