@@ -23,7 +23,7 @@ const RegisterForm = ({
 
   const handleRegister = async (event) => {
     event.preventDefault()
-    // register API calls go here
+    
     handleClose()
   }
 

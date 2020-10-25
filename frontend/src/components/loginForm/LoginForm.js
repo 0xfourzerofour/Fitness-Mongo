@@ -24,7 +24,12 @@ const LoginForm = ({
   const handleLogin = async (event) => {
     event.preventDefault()
     // login API calls go here
-    handleClose()
+
+    // Axios.post('http://localhost:5000/auth/login', {
+    //   username: 'joshwa', 
+    //   password: 'skipro56'
+    // })
+    // handleClose()
   }
 
   const handleUsernameChange = (event) => {
