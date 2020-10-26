@@ -1,5 +1,5 @@
 const router = require('express').Router();
-let exercise = require('../models/program.model');
+let exercise = require('../models/exercise.model');
 let User = require('../models/user.model');
 
 
@@ -21,3 +21,5 @@ router.route('/new').post((req, res) => {
 }
 
 )
+
+module.exports = router;

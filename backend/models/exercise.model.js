@@ -10,8 +10,6 @@ const exerciseSchema = new Schema(
   {
     name: String,
     type: String
-  
-    
   },
   {
     timestamps: true,

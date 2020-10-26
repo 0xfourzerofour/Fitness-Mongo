@@ -4,7 +4,11 @@ let User = require('../models/user.model');
 
 
 router.route('/new').post((req, res) => {
-  const newProgram = new program({
-    
-  })
+  // const newProgram = new program({
+
+  // })
+
+  console.log('test')
 })
+
+module.exports = router;
