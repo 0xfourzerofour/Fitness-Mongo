@@ -8,7 +8,8 @@ const Schema = mongoose.Schema;
 
 const exerciseSchema = new Schema(
   {
-    
+    name: String,
+    type: String
   
     
   },
