@@ -33,12 +33,14 @@ connection.once('open', () => {
 const usersRouter = require('./routes/users');
 const postsRouter = require('./routes/posts');
 const authUser = require('./routes/auth');
+const programsRouter = require('./routes/programs'); 
 
 //setup routes so that they will point to dedicated files
 //based on url
 
 app.use('/users', usersRouter);
-app.use('/posts', postsRouter);
+// app.use('/posts', postsRouter);
+app.use('/programs', programsRouter); 
 app.use('/auth', authUser);
 
 //user static so that we can return static files to the user

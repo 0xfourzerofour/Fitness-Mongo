@@ -28,6 +28,7 @@ const LoginForm = ({
       username: usernameVal,
       password: passwordVal
     })
+    
     handleClose()
   }
 
