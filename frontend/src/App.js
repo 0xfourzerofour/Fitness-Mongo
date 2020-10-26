@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import './App.css'
+import {Route, Switch } from 'react-router-dom';
 import userService from './services/users'
 import Topnav from './components/topnav/Topnav'
 import LoginForm from './components/loginForm/LoginForm'
 import RegisterForm from './components/registerForm/RegisterForm'
 import Home from './components/home/Home'
+import About from './components/about/About'
 
 function App() {
   const [user, setUser] = useState(null)
@@ -37,7 +39,14 @@ function App() {
           setShowLoginForm={setShowLoginForm}
         />
       ) : null}
-      <Home />
+
+      <Switch>
+        <Route path="/" exact component={Home}/>
+        <Route path="/about" exact component={About}/>
+
+      </Switch>
+      
+
     </div>
   )
 }
