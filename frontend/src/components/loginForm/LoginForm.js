@@ -27,8 +27,10 @@ const LoginForm = ({
     await userService.login({
       username: usernameVal,
       password: passwordVal
+    }).then(res => {
+      localStorage.setItem('auth-token', res.token)
     })
-    
+
     handleClose()
   }
 

@@ -8,9 +8,8 @@ const Schema = mongoose.Schema;
 
 const sessionSchema = new Schema(
   {
+    user: String,
     workout: Array
-
-    
   },
   {
     timestamps: true,

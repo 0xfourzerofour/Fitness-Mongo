@@ -1,9 +1,10 @@
 const router = require('express').Router();
 let exercise = require('../models/exercise.model');
-let User = require('../models/user.model');
+let session = require('../models/session.model');
+const verify = require('./verify'); 
 
 
-router.route('/new').post((req, res) => {
+router.route('/new').post(verify, (req, res) => {
   const newExercise = new exercise({
     name: req.body.name,
     type: req.body.type
@@ -21,5 +22,6 @@ router.route('/new').post((req, res) => {
 }
 
 )
+
 
 module.exports = router;
