@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import "./LoginForm.css"
+import userService from '../../services/login'
 import Modal from "react-bootstrap/Modal"
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
@@ -23,7 +24,10 @@ const LoginForm = ({
 
   const handleLogin = async (event) => {
     event.preventDefault()
-    // login API calls go here
+    await userService.login({
+      username: usernameVal,
+      password: passwordVal
+    })
     handleClose()
   }
 
