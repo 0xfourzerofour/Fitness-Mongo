@@ -7,6 +7,7 @@ import LoginForm from './components/loginForm/LoginForm'
 import RegisterForm from './components/registerForm/RegisterForm'
 import Home from './components/home/Home'
 import About from './components/about/About'
+import Dashboard from './components/dashboard/Dashboard';
 
 function App() {
   const [user, setUser] = useState(null)
@@ -43,6 +44,7 @@ function App() {
       <Switch>
         <Route path="/" exact component={Home}/>
         <Route path="/about" exact component={About}/>
+        <Route path="/dashboard" exact component={Dashboard}/>
 
       </Switch>
       

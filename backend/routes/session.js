@@ -7,10 +7,15 @@ const verify = require ('./verify');
 
 router.route('/new').post(verify, (req, res) => {
 
-  
+  var today = new Date();
+  today.setUTCHours(0,0,0,0);
+
+  const newDate = today.toISOString()
+
   const newsession = new session({
     user: req.user,
-    workout: req.body.workout
+    workout: req.body.workout,
+    date: newDate
   })
 
   try{
@@ -37,20 +42,25 @@ router.route('/usersessions').get(verify, (req, res) => {
   })
 })
 
+// function escapeRegex(text) {
+//   return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&')
+// }
 
-// //get workouts for user from auth-token id
-// router.route('/stats').get(verify, (req, res) => {
-//   session.find({
-//     user: { $eq: req.user },
-//     workout: {
-//       $elemMatch: { $eq: req.headers.exercise}
-//     }
-//   }).then(resp => {
-//     res.json(resp)
-//   }).catch(err => {
-//     res.json(err)
-//   })
-// })
+
+router.route('/sessionbydate').get(verify, (req, res) => {
+
+  session.find({
+    user: req.user, 
+    date: {
+      $eq: req.headers.sessiondate
+    }
+  }).then(resp => {
+    res.json(resp)
+  }).catch(err => {
+    res.json(err)
+  })
+
+})
 
 
 

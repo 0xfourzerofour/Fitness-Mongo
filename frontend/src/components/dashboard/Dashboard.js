@@ -1,6 +1,7 @@
 import Axios from 'axios';
 import React from 'react'
 import './Dashboard.css'
+import Calender from '../Calender/Calender'; 
 
 
 class Dashboard extends React.Component {
@@ -26,9 +27,9 @@ class Dashboard extends React.Component {
 
   render(){
     return (
-      <div className="dashboard">
+      <div className="home">
         <h2>Sessions</h2>
-        {this.state.userSessions.map(session => {
+        {/* {this.state.userSessions.map(session => {
           return session.workout.map(workout => {
             return <div style={{background: '#222222', color: "white"}}>
               <ul>
@@ -42,7 +43,8 @@ class Dashboard extends React.Component {
           })
         
           
-        })}
+        })} */}
+      <Calender/>
       </div>
     )
 

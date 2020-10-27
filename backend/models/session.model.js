@@ -9,12 +9,13 @@ const Schema = mongoose.Schema;
 const sessionSchema = new Schema(
   {
     user: String,
-    workout: Array
-  },
-  {
-    timestamps: true,
+    workout: Array,
+    date: Date
   }
+  
 );
+
+
 
 const session = mongoose.model('session', sessionSchema);
 
