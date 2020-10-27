@@ -1,7 +1,6 @@
 import Axios from 'axios';
 import React, { Component } from 'react'
-import {Calendar as Cal,  Table, TableBody, TableCell, List, TableHeader, TableRow,
-  Text,} from 'grommet'; 
+import {Calendar as Cal,  Table, TableBody, TableCell,  TableHeader, TableRow } from 'grommet'; 
 
 
 

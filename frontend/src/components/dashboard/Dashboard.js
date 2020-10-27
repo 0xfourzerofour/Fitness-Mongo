@@ -29,21 +29,7 @@ class Dashboard extends React.Component {
     return (
       <div className="home">
         <h2>Sessions</h2>
-        {/* {this.state.userSessions.map(session => {
-          return session.workout.map(workout => {
-            return <div style={{background: '#222222', color: "white"}}>
-              <ul>
-              <li>Exercise: {workout.exercise}</li>
-              <li>Reps: {workout.reps}</li>
-              <li>Sets: {workout.sets}</li>
-              <li>Weight: {workout.weight}</li>
-              
-            </ul>
-            </div>
-          })
-        
-          
-        })} */}
+
       <Calender/>
       </div>
     )
