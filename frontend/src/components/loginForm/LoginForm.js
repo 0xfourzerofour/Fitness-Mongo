@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import "./LoginForm.css"
+import userService from '../../services/login'
 import Modal from "react-bootstrap/Modal"
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button"
@@ -23,13 +24,14 @@ const LoginForm = ({
 
   const handleLogin = async (event) => {
     event.preventDefault()
-    // login API calls go here
+    await userService.login({
+      username: usernameVal,
+      password: passwordVal
+    }).then(res => {
+      localStorage.setItem('auth-token', res.token)
+    })
 
-    // Axios.post('http://localhost:5000/auth/login', {
-    //   username: 'joshwa', 
-    //   password: 'skipro56'
-    // })
-    // handleClose()
+    handleClose()
   }
 
   const handleUsernameChange = (event) => {

@@ -1,0 +1,12 @@
+html,
+#root,
+body {
+  height: 100%;
+  margin: 0;
+}
+body {
+  font-family: 'Roboto', sans-serif;
+}
+.App {
+  height: 100%;
+}
