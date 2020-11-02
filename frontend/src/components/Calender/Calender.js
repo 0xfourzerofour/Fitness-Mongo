@@ -126,7 +126,7 @@ export default function Calender() {
         </TableBody>
       </Table>
       {
-        session.length >= 1 ? <SessionAppend/> : <SessionForm/>
+        session.length >= 1 ? <SessionAppend date={dateChanged}/> : <SessionForm  date={dateChanged} />
       }
     </div>
   )
