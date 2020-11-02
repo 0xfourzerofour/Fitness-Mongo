@@ -20,7 +20,8 @@ class Calender extends React.Component {
     this.state = {
       date: new Date().toISOString(),
       dateChanged: '',
-      session : [] 
+      session : [],
+      allDates: [] 
     }
 
     this.getNewSession = this.getNewSession.bind(this); 
@@ -71,6 +72,34 @@ class Calender extends React.Component {
 
   componentDidMount(){
 
+    Axios.get('http://localhost:5000/session/alldates',{
+      headers: {
+        'auth-token': localStorage.getItem('auth-token')
+      }
+    }).then(res => {
+
+      //all dates with sessions added to them
+      //current issue with Grommet dates implementation, 
+      //I have lodged a github issue 
+      
+      var newDates = []
+      res.data.forEach((item) => {
+        if(item.date != null){
+          var x = item.date.split("T")
+        newDates.push(x[0])
+        }
+      this.setState({allDates: newDates})
+
+
+      })
+
+
+
+
+
+
+    })
+
     let x = new Date().toISOString(); 
     let y = x.split('T')[0]
     const w = y + 'T00:00:00.000+00:00'
@@ -88,7 +117,7 @@ class Calender extends React.Component {
     <div>
 
       <p>Select Date</p>
-      <Cal date={this.state.date} onSelect={this.dataChange} fill={true} />
+      <Cal dates={this.state.allDates} date={this.state.date} onSelect={this.dataChange} fill={true} />
       <Table>
 
         {

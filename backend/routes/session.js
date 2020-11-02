@@ -7,16 +7,6 @@ const verify = require ('./verify');
 
 router.route('/new').post(verify, async (req, res) => {
 
-  // var today = new Date();
-  // today.setUTCHours(0,0,0,0);
-
-  // const newDate = today.toISOString()
-
-  // // if(session.find({
-  // //   user: req.user,
-
-  // // }))
-
   const newsession = new session({
     user: req.user,
     workout: req.body.workout,
@@ -42,6 +32,22 @@ router.route('/usersessions').get(verify, (req, res) => {
     user: { $eq: req.user },
   }).then(resp => {
     res.json(resp)
+  }).catch(err => {
+    res.json(err)
+  })
+})
+
+router.route('/alldates').get(verify, (req, res) => {
+  session.find({
+    user: { $eq: req.user },
+  },{
+    date: 1
+    
+  }).then(resp => {
+
+res.json(resp)
+   
+    
   }).catch(err => {
     res.json(err)
   })
