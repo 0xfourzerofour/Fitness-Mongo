@@ -22,6 +22,7 @@ function App() {
   const [showLoginForm, setShowLoginForm] = useState(false)
   const [showRegisterForm, setShowRegisterForm] = useState(false)
   return (
+<<<<<<< HEAD
     <div className="App">
       <Topnav
         user={user}
@@ -51,6 +52,25 @@ function App() {
       </Switch>
     </div>
   )
+=======
+
+    <div className="row">
+     <div className="six columns">
+        <h1>
+        Hello User! 
+        <h3>
+        Please login to continue
+        </h3>
+        </h1>
+      </div>
+      <div className="six columns">
+        {/* Loginform  */}
+      </div>
+    </div>
+          
+    // Further css can be added after loginform etc is done
+  );
+>>>>>>> 390ebaca185c3437df69a73989cc70174a4ba3bf
 }
 
 export default App
