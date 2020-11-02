@@ -93,11 +93,6 @@ class Calender extends React.Component {
 
       })
 
-
-
-
-
-
     })
 
     let x = new Date().toISOString(); 
