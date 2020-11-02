@@ -1,5 +1,5 @@
 import Axios from 'axios'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   Calendar as Cal,
   Table,
@@ -8,9 +8,7 @@ import {
   TableHeader,
   TableRow,
 } from 'grommet'
-import InputGroup from 'react-bootstrap/InputGroup'
-import FormControl from 'react-bootstrap/FormControl'
-import Button from 'react-bootstrap/Button'
+
 import SessionForm from '../SessionForm/SessionForm'
 import SessionAppend from '../SessionAppend.js/SessionAppend'
 
@@ -35,6 +33,8 @@ export default function Calender() {
     })
   }
 
+
+
   const dataChange = (e) => {
     let x = e.split('T')[0]
 
@@ -46,44 +46,22 @@ export default function Calender() {
     getNewSession()
   }
 
-  const handleAddWorkout = () => {
-    // Axios.post('http://localhost:5000/session/new', {
-    //   workout: {
-    //     exercise,
-    //     sets,
-    //     reps,
-    //     weight
-    //   }
-    // }).then(res => {
-    //   console.log(res)
-    // }).catch(err => {
-    //   console.log(err)
-    // })
+  useEffect(() => {
+
+    let x = new Date().toISOString(); 
+    let y = x.split('T')[0]
+    const w = y + 'T00:00:00.000+00:00'
+    setDateChanged(w)
+
+    // console.log(w)
 
 
-  }
 
-  const handleExerciseChange = (event) => {
-    const input = String(event.target.value)
-    console.log(input)
+    
 
-    setExercise(input)
-  }
+  }, [])
 
-  const handleSetsChange = (event) => {
-    const input = String(event.target.value)
-    setSets(input)
-  }
-
-  const handleRepsChange = (event) => {
-    const input = String(event.target.value)
-    setReps(input)
-  }
-
-  const handleWeightChange = (event) => {
-    const input = String(event.target.value)
-    setWeight(input)
-  }
+  
 
   return (
     <div>
@@ -91,7 +69,9 @@ export default function Calender() {
       <p>Select Date</p>
       <Cal date={date} onSelect={dataChange} fill={true} />
       <Table>
-        <TableHeader>
+
+        {
+          session.length >= 1 ? <TableHeader>
           <TableRow>
             <TableCell scope="col" border="bottom">
               Exercise
@@ -106,24 +86,29 @@ export default function Calender() {
               Weight
             </TableCell>
           </TableRow>
-        </TableHeader>
-        <TableBody>
-          {session.map((sesh) => {
-            return sesh.workout.map((s) => {
-              return (
-                <TableRow>
-                  <TableCell scope="row">
-                    <strong>{s.exercise}</strong>
-                  </TableCell>
-                  <TableCell>{s.reps}</TableCell>
-                  <TableCell>{s.sets}</TableCell>
-                  <TableCell>{s.weight}</TableCell>
-                </TableRow>
-              )
-            })
-          })}
-          
-        </TableBody>
+        </TableHeader> : <div/>
+        }
+        
+        {
+        session.length >= 1 ?<TableBody>
+        {session.map((sesh) => {
+          return sesh.workout.map((s) => {
+            return (
+              <TableRow>
+                <TableCell scope="row">
+                  <strong>{s.exercise}</strong>
+                </TableCell>
+                <TableCell>{s.reps}</TableCell>
+                <TableCell>{s.sets}</TableCell>
+                <TableCell>{s.weight}</TableCell>
+              </TableRow>
+            )
+          })
+        })}
+        
+      </TableBody> : <div/>
+      }
+        
       </Table>
       {
         session.length >= 1 ? <SessionAppend date={dateChanged}/> : <SessionForm  date={dateChanged} />

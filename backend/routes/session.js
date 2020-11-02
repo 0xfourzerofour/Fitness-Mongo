@@ -7,20 +7,20 @@ const verify = require ('./verify');
 
 router.route('/new').post(verify, async (req, res) => {
 
-  var today = new Date();
-  today.setUTCHours(0,0,0,0);
+  // var today = new Date();
+  // today.setUTCHours(0,0,0,0);
 
-  const newDate = today.toISOString()
+  // const newDate = today.toISOString()
 
-  // if(session.find({
-  //   user: req.user,
+  // // if(session.find({
+  // //   user: req.user,
 
-  // }))
+  // // }))
 
   const newsession = new session({
     user: req.user,
     workout: req.body.workout,
-    date: newDate
+    date: req.body.date
   })
 
   try{
