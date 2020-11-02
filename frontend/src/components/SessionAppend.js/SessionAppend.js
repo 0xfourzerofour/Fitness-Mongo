@@ -54,6 +54,8 @@ export default class SessionAppend extends Component {
         reps: "",
         weight: ""
       })
+
+      this.props.updateSessions()
     }).catch(err => {
       console.log(err)
     })

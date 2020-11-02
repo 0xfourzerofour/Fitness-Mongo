@@ -69,6 +69,7 @@ export default class SessionForm extends Component {
       }
     }).then(res => {
       console.log(res)
+      this.props.updateSessions()
     }).catch(err => {
       console.log(err)
     })

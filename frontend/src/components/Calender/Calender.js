@@ -12,66 +12,87 @@ import {
 import SessionForm from '../SessionForm/SessionForm'
 import SessionAppend from '../SessionAppend.js/SessionAppend'
 
-export default function Calender() {
-  const [date, setDate] = useState(new Date().toISOString())
-  const [dateChanged, setDateChanged] = useState('')
-  const [session, setSession] = useState([])
-  const [exercise, setExercise] = useState('')
-  const [sets, setSets] = useState('')
-  const [reps, setReps] = useState('')
-  const [weight, setWeight] = useState('')
+class Calender extends React.Component {
 
-  const getNewSession = () => {
+  constructor(props){
+    super(props); 
+
+    this.state = {
+      date: new Date().toISOString(),
+      dateChanged: '',
+      session : [] 
+    }
+
+    this.getNewSession = this.getNewSession.bind(this); 
+
+    this.dataChange = this.dataChange.bind(this);
+    this.updateSessions = this.updateSessions
+
+  }
+
+  getNewSession = () => {
     Axios.get('http://localhost:5000/session/sessionbydate', {
       headers: {
         'auth-token': localStorage.getItem('auth-token'),
-        sessionDate: dateChanged,
+        sessionDate: this.state.dateChanged,
       },
     }).then((res) => {
-      setSession(res.data)
+      this.setState({session: res.data})
 
     })
   }
 
+  updateSessions = () => {
+    Axios.get('http://localhost:5000/session/sessionbydate', {
+      headers: {
+        'auth-token': localStorage.getItem('auth-token'),
+        sessionDate: this.state.dateChanged,
+      },
+    }).then((res) => {
+      this.setState({session: res.data})
+
+    })
+
+  }
 
 
-  const dataChange = (e) => {
+  dataChange = (e) => {
     let x = e.split('T')[0]
 
     const y = x + 'T00:00:00.000+00:00'
 
-    setDateChanged(y)
-    setDate(e)
+    this.setState({
+      date: e, 
+      dateChanged: y
+    })
 
-    getNewSession()
+    this.getNewSession()
   }
 
-  useEffect(() => {
+  componentDidMount(){
 
     let x = new Date().toISOString(); 
     let y = x.split('T')[0]
     const w = y + 'T00:00:00.000+00:00'
-    setDateChanged(w)
+    this.setState({dateChanged: w})
 
-    // console.log(w)
-
-
-
-    
-
-  }, [])
+    this.getNewSession();
 
   
 
+  }
+
+
+  render(){
   return (
     <div>
 
       <p>Select Date</p>
-      <Cal date={date} onSelect={dataChange} fill={true} />
+      <Cal date={this.state.date} onSelect={this.dataChange} fill={true} />
       <Table>
 
         {
-          session.length >= 1 ? <TableHeader>
+          this.state.session.length >= 1 ? <TableHeader>
           <TableRow>
             <TableCell scope="col" border="bottom">
               Exercise
@@ -90,8 +111,8 @@ export default function Calender() {
         }
         
         {
-        session.length >= 1 ?<TableBody>
-        {session.map((sesh) => {
+        this.state.session.length >= 1 ?<TableBody>
+        {this.state.session.map((sesh) => {
           return sesh.workout.map((s) => {
             return (
               <TableRow>
@@ -111,8 +132,16 @@ export default function Calender() {
         
       </Table>
       {
-        session.length >= 1 ? <SessionAppend date={dateChanged}/> : <SessionForm  date={dateChanged} />
+        this.state.session.length >= 1 ? <SessionAppend updateSessions={this.updateSessions} date={this.state.dateChanged}/> : <SessionForm updateSessions={this.updateSessions} date={this.state.dateChanged} />
       }
     </div>
   )
+
+  
 }
+  
+
+  
+}
+
+export default Calender; 
