@@ -6,6 +6,8 @@ import App from "./App"
 
 // Importing the Bootstrap CSS
 //small update
+
+//another one
 import "bootstrap/dist/css/bootstrap.min.css"
 
 ReactDOM.render(<BrowserRouter><App /></BrowserRouter>, document.getElementById("root"))
