@@ -9,6 +9,8 @@ import Home from './components/home/Home'
 import About from './components/about/About'
 import Dashboard from './components/dashboard/Dashboard'
 
+//comment
+
 function App() {
   const [user, setUser] = useState(null)
   useEffect(() => {
@@ -45,6 +47,8 @@ function App() {
       ) : null}
 
       <Switch>
+
+
         <Route path="/" exact component={Home} />
         <Route path="/about" exact component={About} />
         <Route path="/dashboard" exact component={Dashboard} />
