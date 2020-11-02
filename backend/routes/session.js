@@ -5,12 +5,17 @@ const verify = require ('./verify');
 
 
 
-router.route('/new').post(verify, (req, res) => {
+router.route('/new').post(verify, async (req, res) => {
 
   var today = new Date();
   today.setUTCHours(0,0,0,0);
 
   const newDate = today.toISOString()
+
+  // if(session.find({
+  //   user: req.user,
+
+  // }))
 
   const newsession = new session({
     user: req.user,
@@ -42,10 +47,6 @@ router.route('/usersessions').get(verify, (req, res) => {
   })
 })
 
-// function escapeRegex(text) {
-//   return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&')
-// }
-
 
 router.route('/sessionbydate').get(verify, (req, res) => {
 
@@ -60,6 +61,23 @@ router.route('/sessionbydate').get(verify, (req, res) => {
     res.json(err)
   })
 
+})
+
+
+router.route('/append').put(verify, (req, res) => {
+  session.updateOne({
+    date: req.body.date,
+    user: req.user 
+  }, 
+  {
+    $push: {
+      workout: [req.body.workout]
+    }
+  }).then(resp => {
+    res.json("session updated")
+  }).catch( err => {
+    res.json(err)
+  })
 })
 
 

@@ -11,6 +11,8 @@ import {
 import InputGroup from 'react-bootstrap/InputGroup'
 import FormControl from 'react-bootstrap/FormControl'
 import Button from 'react-bootstrap/Button'
+import SessionForm from '../SessionForm/SessionForm'
+import SessionAppend from '../SessionAppend.js/SessionAppend'
 
 export default function Calender() {
   const [date, setDate] = useState(new Date().toISOString())
@@ -29,7 +31,7 @@ export default function Calender() {
       },
     }).then((res) => {
       setSession(res.data)
-      console.log(res)
+
     })
   }
 
@@ -45,7 +47,20 @@ export default function Calender() {
   }
 
   const handleAddWorkout = () => {
-    console.log('meme')
+    // Axios.post('http://localhost:5000/session/new', {
+    //   workout: {
+    //     exercise,
+    //     sets,
+    //     reps,
+    //     weight
+    //   }
+    // }).then(res => {
+    //   console.log(res)
+    // }).catch(err => {
+    //   console.log(err)
+    // })
+
+
   }
 
   const handleExerciseChange = (event) => {
@@ -72,6 +87,8 @@ export default function Calender() {
 
   return (
     <div>
+
+      <p>Select Date</p>
       <Cal date={date} onSelect={dataChange} fill={true} />
       <Table>
         <TableHeader>
@@ -105,57 +122,12 @@ export default function Calender() {
               )
             })
           })}
-          <TableRow>
-            <TableCell scope="row">
-              <InputGroup size="sm">
-                <FormControl
-                  aria-label="Small"
-                  aria-describedby="inputGroup-sizing-sm"
-                  value={exercise}
-                  onChange={handleExerciseChange}
-                />
-              </InputGroup>
-            </TableCell>
-            <TableCell>
-              <InputGroup size="sm">
-                <FormControl
-                  aria-label="Small"
-                  aria-describedby="inputGroup-sizing-sm"
-                  value={reps}
-                  onChange={handleRepsChange}
-                />
-              </InputGroup>
-            </TableCell>
-            <TableCell>
-              <InputGroup size="sm">
-                <FormControl
-                  aria-label="Small"
-                  aria-describedby="inputGroup-sizing-sm"
-                  value={sets}
-                  onChange={handleSetsChange}
-                />
-              </InputGroup>
-            </TableCell>
-            <TableCell>
-              <InputGroup size="sm">
-                <FormControl
-                  aria-label="Small"
-                  aria-describedby="inputGroup-sizing-sm"
-                  value={weight}
-                  onChange={handleWeightChange}
-                />
-              </InputGroup>
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell scope="row">
-              <Button variant="primary" onClick={handleAddWorkout}>
-                Add workout
-              </Button>
-            </TableCell>
-          </TableRow>
+          
         </TableBody>
       </Table>
+      {
+        session.length >= 1 ? <SessionAppend/> : <SessionForm/>
+      }
     </div>
   )
 }
