@@ -2,6 +2,7 @@ import Axios from 'axios';
 import React from 'react'
 import './Dashboard.css'
 import Calender from '../Calender/Calender'; 
+import Chart from '../chart/Chart';
 
 
 class Dashboard extends React.Component {
@@ -31,6 +32,7 @@ class Dashboard extends React.Component {
         <h2>Sessions</h2>
 
       <Calender/>
+      <Chart/>
       </div>
     )
 

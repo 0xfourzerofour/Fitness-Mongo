@@ -42,6 +42,17 @@ router.route('/usersessions').get(verify, (req, res) => {
   })
 })
 
+//get number of workouts for user from auth-token id
+router.route('/usersessionscount').get(verify, (req, res) => {
+  session.find({
+    user: { $eq: req.user },
+  }).then(resp => {
+    res.json(resp)
+  }).catch(err => {
+    res.json(err)
+  })
+})
+
 // function escapeRegex(text) {
 //   return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&')
 // }
