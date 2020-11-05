@@ -112,7 +112,7 @@ class Calender extends React.Component {
     <div>
 
       <p>Select Date</p>
-      <Cal dates={this.state.allDates} date={this.state.date} onSelect={this.dataChange} fill={true} />
+      <Cal dates={this.state.allDates}  onSelect={this.dataChange} fill={true} />
       <Table>
 
         {
@@ -131,7 +131,7 @@ class Calender extends React.Component {
               Weight
             </TableCell>
           </TableRow>
-        </TableHeader> : <div/>
+        </TableHeader> : <p>Sorry no information for selected day.</p>
         }
         
         {
