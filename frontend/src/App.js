@@ -8,6 +8,8 @@ import RegisterForm from './components/registerForm/RegisterForm'
 import Home from './components/home/Home'
 import About from './components/about/About'
 import Dashboard from './components/dashboard/Dashboard'
+import Public from './Public'; 
+import Protected from './Protected'; 
 
 //comment
 
@@ -49,9 +51,9 @@ function App() {
       <Switch>
 
 
-        <Route path="/" exact component={Home} />
-        <Route path="/about" exact component={About} />
-        <Route path="/dashboard" exact component={Dashboard} />
+        <Public path="/" exact component={Home} />
+        <Public path="/about" exact component={About} />
+        <Protected path="/dashboard" exact component={Dashboard} />
       </Switch>
     </div>
   )
