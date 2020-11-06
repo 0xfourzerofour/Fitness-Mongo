@@ -16,7 +16,7 @@ const Public = ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       render={(props) => {
-        if (!userData.user) {
+        if (!userData) {
           return <Component {...props} />;
         } else {
           return (
