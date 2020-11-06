@@ -61,8 +61,6 @@ router.route('/currentuser').get(verify, (req, res) => {
       res.json({
         id: user._id,
         username: user.username,
-        following: user.following,
-        bio: user.bio,
       })
     )
     .catch((err) => res.status(400).json('Error: ' + err))
