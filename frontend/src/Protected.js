@@ -11,12 +11,12 @@ import Context from './Context/User';
 //will be redirected to the signin page.
 
 const Protected = ({ component: Component, ...rest }) => {
-  const { userData } = useContext(Context);
+  const { userData, setUser } = useContext(Context.Consumer);
   return (
     <Route
       {...rest}
       render={(props) => {
-        if (userData.user) {
+        if (userData) {
           return <Component {...props} />;
         } else {
           return (

@@ -91,8 +91,6 @@ class Calender extends React.Component {
         newDates.push(x[0])
         }
       this.setState({allDates: newDates})
-
-
       })
 
     })
