@@ -101,9 +101,6 @@ class Calender extends React.Component {
     this.setState({dateChanged: w})
 
     this.getNewSession();
-
-  
-
   }
 
 

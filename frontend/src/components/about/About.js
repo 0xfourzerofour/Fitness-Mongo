@@ -1,13 +1,24 @@
 import React from 'react'
 import './Home.css'
 
+import {Jumbotron, Container} from 'react-bootstrap'
+
 
 const About = () => {
   return (
-    <div className="home">
-      <h2>About</h2>
+   <div >
+<Jumbotron fluid>
+  <Container>
+    <h1>About</h1>
+    <p>
+      What is Fit used for?
+    </p>
+  </Container>
+</Jumbotron>
+   </div>
+      
    
-    </div>
+   
   )
 }
 

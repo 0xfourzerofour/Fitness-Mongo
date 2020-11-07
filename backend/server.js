@@ -32,7 +32,7 @@ connection.once('open', () => {
 //import all routes from dedicated files
 const usersRouter = require('./routes/users');
 // const postsRouter = require('./routes/posts');
-const exerciseRouter = require('./routes/exercise');
+
 const authUser = require('./routes/auth');
 const programsRouter = require('./routes/programs'); 
 const sessionRouter = require('./routes/session'); 
@@ -44,7 +44,7 @@ app.use('/users', usersRouter);
 // app.use('/posts', postsRouter);
 app.use('/programs', programsRouter); 
 app.use('/auth', authUser);
-app.use('/exercises', exerciseRouter);
+
 app.use('/session', sessionRouter);
 
 //user static so that we can return static files to the user
