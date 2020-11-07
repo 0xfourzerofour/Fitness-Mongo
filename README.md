@@ -49,7 +49,7 @@ Swarnim completed the documentation for the project.
 ### Backend
 > Joshua and Brian
 
-Joshua...
+Joshua implemented API routes/Middleware, Database Schema, Applicaiton Deployment and helped with the frontend of the site. For the API routes and Midleware, Joshua created the /Auth, /Session, /Users routes and the corresponding 'Verify' Middleware function to protect the routes. The Database schema was decided as a group and Joshua imlpemented it into the application. Joshua Set up a CI-CD implementation with deployment using github actions that automatically creates a build of the applicaiton when the master branch is updated (Read more in Deployment.md). Joshua also assisted with creating the frontend of the site by imlementing the Search, Settings, About, Card, InfoCard, SessionForm, SessionAppend, Calender components and helpde with the Dashboard & Home components.   
 
 Brian...
 ### Database
