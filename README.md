@@ -7,15 +7,18 @@ A reference to your second Github repository if you used one
 A description of what you have been able to implement in this MVP, use your milestones to highlight what you've achieved
 
 A guide to the project source code - where should we look for what you have done
-
-├───backend
-    └───services
-
-├───frontend
+> Folder structure 
+    .
+    ├───backend
+    │   ├───models              # Contains the models for data stored using MongoDB
+    │   └───routes              # Contains the routes for the backend to handle API requests
+    │
+    │
+    │
+    ├───frontend
     └───src
-        ├───components | Contains the React components used in the application
-        │
-        └───services | Contains axios requests to the backend and token storing
+        ├───components          # Contains the React components used in the application
+        └───services            # Contains axios requests to the backend and token storing
         
 A summary of what your next steps would be if you were to continue the project
 
