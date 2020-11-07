@@ -21,6 +21,8 @@ Users can:
 * View their workouts by clicking on a date on the calendar.
 * Add to their workout on a chosen date.
 * View their progress of a specific exercise over time.
+* Search for other users to see how many days they have logged. 
+* update their user information (password, username, image)
 
 ## Guide to the project source code
     .
