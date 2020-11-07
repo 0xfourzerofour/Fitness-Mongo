@@ -11,7 +11,7 @@ import Context from './Context/User'
 //will be redirected to the signin page.
 
 const Protected = ({ component: Component, ...rest }) => {
-  const { userData } = useContext(Context)
+  const { userData, setUser } = useContext(Context.Consumer)
   return (
     <Route
       {...rest}
@@ -22,7 +22,7 @@ const Protected = ({ component: Component, ...rest }) => {
           return (
             <Redirect
               to={{
-                pathname: '/signin',
+                pathname: '/',
                 state: { from: props.location },
               }}
             />

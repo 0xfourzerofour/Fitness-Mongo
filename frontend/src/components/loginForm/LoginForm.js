@@ -1,18 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import './LoginForm.css'
 import userService from '../../services/login'
 import Modal from 'react-bootstrap/Modal'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import Context from '../../Context/User';
 
 const LoginForm = ({
-  setUser,
   showLoginForm,
   setShowLoginForm,
   setShowRegisterForm,
 }) => {
   const [usernameVal, setUsernameVal] = useState('')
   const [passwordVal, setPasswordVal] = useState('')
+  const {userData, setUser} = useContext(Context.Consumer)
 
   const handleClose = () => {
     setShowLoginForm(false)
@@ -29,17 +30,17 @@ const LoginForm = ({
       username: usernameVal,
       password: passwordVal,
     })
+
+    console.log(user)
+    
     setUser({
-      id: user.id,
-      username: user.username,
-    })
-    localStorage.setItem(
-      'loggedFitUser',
-      JSON.stringify({
+      token: user.token,
+      user: {
         id: user.id,
         username: user.username,
-      })
-    )
+      },
+    })
+    
     localStorage.setItem('auth-token', user.token)
     handleClose()
   }

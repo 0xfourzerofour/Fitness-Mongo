@@ -92,7 +92,7 @@ function App() {
 
       <Switch>
         <Public path="/" exact component={Home} />
-        <Public path="/about" exact component={About} />
+        <Route path="/about" exact component={About} />
         <Protected path="/dashboard" exact component={Dashboard} />
       </Switch>
     </Context.Provider>

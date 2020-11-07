@@ -11,7 +11,7 @@ import Context from './Context/User';
 //if not the component will load
 
 const Public = ({ component: Component, ...rest }) => {
-  const { userData } = useContext(Context);
+  const { userData, setUser } = useContext(Context.Consumer);
   return (
     <Route
       {...rest}
@@ -22,7 +22,7 @@ const Public = ({ component: Component, ...rest }) => {
           return (
             <Redirect
               to={{
-                pathname: '/feed',
+                pathname: '/dashboard',
                 state: { from: props.location },
               }}
             />
