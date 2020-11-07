@@ -7,7 +7,7 @@ A reference to your second Github repository if you used one
 A description of what you have been able to implement in this MVP, use your milestones to highlight what you've achieved
 
 A guide to the project source code - where should we look for what you have done
-> Folder structure 
+### Guide to the project source code
     .
     ├───backend
     │   ├───models              # Contains the models for data stored using MongoDB
