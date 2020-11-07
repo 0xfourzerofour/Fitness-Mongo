@@ -83,12 +83,12 @@ export default class SessionForm extends Component {
               <>
                 {this.state.workout.map((s) => {
                   return (
-                    <TableRow key={s}>
+                    <TableRow key={s.exercise}>
                       <TableCell scope="row">
                         <strong>{s.exercise}</strong>
                       </TableCell>
-                      <TableCell>{s.reps}</TableCell>
                       <TableCell>{s.sets}</TableCell>
+                      <TableCell>{s.reps}</TableCell>
                       <TableCell>{s.weight}</TableCell>
                     </TableRow>
                   )
