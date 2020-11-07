@@ -20,17 +20,11 @@ frontend routes and the '/api' routes.
 
 `curl https://gist.githubusercontent.com/cornflourblue/f0abd30f47d96d6ff127fe8a9e5bbd9f/raw/e3047c9dc3ce8b796e7354c92d2c47ce61981d2f/setup-nodejs-mongodb-production-server-on-ubuntu-1804.sh | sudo bash`
 
-4. navigate to `/opt` and clone this repo
-
-`$ cd /opt && sudo git clone https://github.com/MQCOMP3120-2020/individual-web-development-task-joshpauline/`
+4. Create github action runner and execute the runner setup in home directory
 
 5. run pm2 server
 
-`cd individual-web-development-task-joshpauline/backend && sudo pm2 start server`
-
-6. create react production build
-
-`cd ../front && sudo npm run build`
+`cd GroupAss-3100/backend && sudo pm2 start server`
 
 7. configure NGNIX
 
@@ -46,13 +40,13 @@ server {
 
   # react app & front-end files
   location / {
-    root /opt/individual-web-development-task-joshpauline/front/build;
+    root /home/ubuntu/actionrunner/project/GroupAss-COMP3100/front/build;
     try_files $uri /index.html;
   }
 
   # node api reverse proxy
   location /api/ {
-    proxy_pass /api/;
+    proxy_pass http://localhost:5000;
   }
 }
 ```
