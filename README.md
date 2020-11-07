@@ -42,7 +42,7 @@ A summary of what your next steps would be if you were to continue the project
 > Julian and Swarnim
 
 Julian implemented view components including: the navigation bar, the chart view, the dashboard, and the home page. 
-Julian also created calls to the backend to post and get data.
+Julian also created calls to the backend to post and get data, and created this README.md.
 
 Swarnim completed the documentation for the project.
 
