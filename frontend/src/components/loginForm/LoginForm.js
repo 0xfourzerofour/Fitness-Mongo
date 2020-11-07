@@ -30,10 +30,15 @@ const LoginForm = ({
       username: usernameVal,
       password: passwordVal,
     })
+
+    console.log(user)
     
     setUser({
-      id: user.id,
-      username: user.username,
+      token: user.token,
+      user: {
+        id: user.id,
+        username: user.username,
+      },
     })
     
     localStorage.setItem('auth-token', user.token)

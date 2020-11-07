@@ -30,7 +30,7 @@ const Topnav = ({  showLoginForm, setShowLoginForm }) => {
         {userData ? (
           <>
             <Navbar.Text className="mr-4">
-              {userData ? `Signed in as: ${userData.user.username}` : ""}
+              {userData != null ? `Signed in as: ${userData.user.username}` : ""}
             </Navbar.Text>
             <Button onClick={logout}>Logout</Button>
           </>
