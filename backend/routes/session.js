@@ -1,5 +1,6 @@
 const router = require('express').Router()
 let session = require('../models/session.model')
+let user = require('../models/user.model');
 
 const verify = require('./verify')
 
@@ -14,6 +15,12 @@ router.route('/new').post(verify, async (req, res) => {
     newsession
       .save()
       .then((resp) => {
+
+        user.updateOne({_id: req.user}, {
+          $inc: {sessions: 1}
+        }).then(resp =>{
+          console.log("incremented")
+        })
         res.json(resp)
       })
       .catch((err) => {

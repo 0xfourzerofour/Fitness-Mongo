@@ -53,7 +53,8 @@ function App() {
             id: user.data.id,
             username: user.data.username,
             image: user.data.image,
-            created: user.data.created
+            created: user.data.created,
+            sessions: user.data.sessions
           },
         })
       }

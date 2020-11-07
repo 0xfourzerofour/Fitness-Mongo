@@ -12,6 +12,7 @@ var userSchema = new Schema(
     },
     password: String,
     imageUrl: String,
+    sessions: Number,
 
   },
   {

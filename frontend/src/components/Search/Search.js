@@ -82,7 +82,7 @@ export default class Settings extends Component {
 
   <ListGroup variant="flush">
     {this.state.users.map(user => {
-      return <ListGroup.Item>{user.username}</ListGroup.Item>
+      return <ListGroup.Item> <b>{user.username} </b> - {user.sessions} workouts Logged since {user.createdAt.split("T")[0]}</ListGroup.Item>
     })}
   
 </ListGroup>

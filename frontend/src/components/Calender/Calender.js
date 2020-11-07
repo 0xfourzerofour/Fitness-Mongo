@@ -11,7 +11,7 @@ import {
 } from 'grommet'
 
 import SessionForm from '../SessionForm/SessionForm'
-import SessionAppend from '../SessionAppend.js/SessionAppend'
+import SessionAppend from '../SessionAppend/SessionAppend'
 import ChartView from '../chartView/ChartView'
 
 // test

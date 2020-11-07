@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs')
 const multer = require('multer')
 const verify = require('./verify')
 let User = require('../models/user.model')
+const session = require('../models/session.model')
 
 //I used multer to specify the location to store images on the server
 //and to automatically name the files based on their original name and
@@ -19,39 +20,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage })
 
-//This is a simply API request that takes the request username and returns all the detail
-//for the requested user. (Exluding Hashed passwords)
-router.route('/userdetails').post(verify, (req, res) => {
-  User.findOne({ username: req.body.id })
-    .then((users) =>
-      res.json({
-        username: users.username,
-        imageUrl: users.imageUrl,
-        following: users.following,
-        bio: users.bio,
-      })
-    )
-    .catch((err) => res.status(400).json('Error: ' + err))
-})
 
-//returns id of user based on the passed '@username' format
-router.route('/id').get(verify, (req, res) => {
-  const id = req.headers.user.split('@')
-
-  console.log(id[1])
-
-  User.findOne({
-    username: {
-      $eq: id[1],
-    },
-  })
-    .then((resp) => {
-      res.json(resp._id)
-    })
-    .catch((err) => {
-      res.json('no user found')
-    })
-})
 
 //This route returns the current user based on the ID that is returned
 //from the verify middleware function (this is called in our App.js file on load)
@@ -62,7 +31,8 @@ router.route('/currentuser').get(verify, (req, res) => {
         id: user._id,
         username: user.username,
         image: user.imageUrl,
-        created: user.createdAt
+        created: user.createdAt,
+        sessions: user.sessions
       })
     )
     .catch((err) => res.status(400).json('Error: ' + err))
@@ -90,7 +60,9 @@ router.route('/search').post(verify, (req, res) => {
     .catch((err) => res.status(400).json('Error: ' + err))
 })
 
-router.route('/searchall').get(verify, (req, res) => {
+
+
+router.route('/searchall').get(verify, async (req, res) => {
 
   User.find()
 
@@ -122,6 +94,7 @@ router.route('/add').post(upload.single('image'), async (req, res) => {
   const newUser = new User({
     username: lowered,
     password: hashPassword,
+    sessions: 0,
 
     imageUrl,
   })
@@ -136,20 +109,6 @@ router.route('/add').post(upload.single('image'), async (req, res) => {
   }
 })
 
-//This route just takes the current user from the auth-token
-//and adds them to the requested username to their following array
-router.route('/follow').put(verify, (req, res) => {
-  User.updateOne(
-    { _id: req.user },
-    {
-      $addToSet: {
-        following: req.body.user,
-      },
-    }
-  ).then((resp) => {
-    res.json(resp)
-  })
-})
 
 
 
