@@ -74,7 +74,6 @@ class Calender extends React.Component {
     }).then((res) => {
       let responseData = res.data.map((item) => {
         var options = {
-          year: 'numeric',
           month: 'numeric',
           day: 'numeric',
         }
@@ -92,7 +91,6 @@ class Calender extends React.Component {
       })
       let responseDates = responseData.map((item) => item.date)
       let responseWeight = responseData.map((item) => item.weight)
-      console.log(responseData)
       this.setState({
         chartExerciseData: {
           name: exercise,
@@ -108,8 +106,6 @@ class Calender extends React.Component {
     let x = e.split('T')[0]
 
     const y = x + 'T00:00:00.000+00:00'
-
-    console.log('y', y)
 
     this.setState({
       date: e,

@@ -1,0 +1,11 @@
+.navlogo {
+  color: white;
+}
+.navlogo:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.navlink {
+  color: white;
+}
