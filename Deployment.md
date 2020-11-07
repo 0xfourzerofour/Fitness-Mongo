@@ -1,10 +1,62 @@
 Deployment for this site was implemented by setting up an Amazon Ec2 intance and creating a github action to then make a build of the applicaiton whenever there is a push to the master branch on git. 
 
-##Steps to Set Up## 
+NGNIX was used to act as a reverse proxy between the
+frontend routes and the '/api' routes.
 
-`1. Create Amazon Ec2 Ubuntu instance (Make sure Http connections are enabled so that the site can be reached on the browser)`
+### LINUX SERVER dependencies
 
-`1. Install `
+`pm2`
+`nginx`
+`node`
+`git`
+
+## USAGE
+
+1. Create an AWS EC2 instance and make sure you have HTTP, HTTPS, SHH connections turned on.
+
+2. ssh into the server using you private key.
+
+3. install server dependencies
+
+`curl https://gist.githubusercontent.com/cornflourblue/f0abd30f47d96d6ff127fe8a9e5bbd9f/raw/e3047c9dc3ce8b796e7354c92d2c47ce61981d2f/setup-nodejs-mongodb-production-server-on-ubuntu-1804.sh | sudo bash`
+
+4. navigate to `/opt` and clone this repo
+
+`$ cd /opt && sudo git clone https://github.com/MQCOMP3120-2020/individual-web-development-task-joshpauline/`
+
+5. run pm2 server
+
+`cd individual-web-development-task-joshpauline/backend && sudo pm2 start server`
+
+6. create react production build
+
+`cd ../front && sudo npm run build`
+
+7. configure NGNIX
+
+`sudo rm /etc/nginx/sites-available/default`
+`sudo nano /etc/nginx/sites-available/default`
+
+Use nano or vim to configure NGINX reverse proxy like below.
+
+```
+server {
+  listen 80 default_server;
+  server_name _;
+
+  # react app & front-end files
+  location / {
+    root /opt/individual-web-development-task-joshpauline/front/build;
+    try_files $uri /index.html;
+  }
+
+  # node api reverse proxy
+  location /api/ {
+    proxy_pass /api/;
+  }
+}
+```
+
 
 
 **Link of the deployed website**
