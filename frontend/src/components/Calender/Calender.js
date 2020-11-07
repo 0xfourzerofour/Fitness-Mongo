@@ -15,22 +15,20 @@ import SessionAppend from '../SessionAppend.js/SessionAppend'
 // test
 
 class Calender extends React.Component {
-
-  constructor(props){
-    super(props); 
+  constructor(props) {
+    super(props)
 
     this.state = {
       date: new Date().toISOString(),
       dateChanged: '',
-      session : [],
-      allDates: [] 
+      session: [],
+      allDates: [],
     }
 
-    this.getNewSession = this.getNewSession.bind(this); 
+    this.getNewSession = this.getNewSession.bind(this)
 
-    this.dataChange = this.dataChange.bind(this);
+    this.dataChange = this.dataChange.bind(this)
     this.updateSessions = this.updateSessions
-
   }
 
   getNewSession = () => {
@@ -40,8 +38,8 @@ class Calender extends React.Component {
         sessionDate: this.state.dateChanged,
       },
     }).then((res) => {
-      this.setState({session: res.data})
-
+      console.log(res)
+      this.setState({ session: res.data })
     })
   }
 
@@ -52,12 +50,9 @@ class Calender extends React.Component {
         sessionDate: this.state.dateChanged,
       },
     }).then((res) => {
-      this.setState({session: res.data})
-
+      this.setState({ session: res.data })
     })
-
   }
-
 
   dataChange = (e) => {
     let x = e.split('T')[0]
@@ -65,104 +60,118 @@ class Calender extends React.Component {
     const y = x + 'T00:00:00.000+00:00'
 
     this.setState({
-      date: e, 
-      dateChanged: y
+      date: e,
+      dateChanged: y,
     })
 
     this.getNewSession()
   }
 
-  componentDidMount(){
-
-    Axios.get('http://localhost:5000/session/alldates',{
+  componentDidMount() {
+    Axios.get('http://localhost:5000/session/alldates', {
       headers: {
-        'auth-token': localStorage.getItem('auth-token')
-      }
-    }).then(res => {
-
+        'auth-token': localStorage.getItem('auth-token'),
+      },
+    }).then((res) => {
       //all dates with sessions added to them
-      //current issue with Grommet dates implementation, 
-      //I have lodged a github issue 
-      
+      //current issue with Grommet dates implementation,
+      //I have lodged a github issue
+
+      console.log(res)
+
       var newDates = []
       res.data.forEach((item) => {
-        if(item.date != null){
-          var x = item.date.split("T")
-        newDates.push(x[0])
+        if (item.date != null) {
+          var x = item.date.split('T')
+          newDates.push(x[0])
         }
-      this.setState({allDates: newDates})
+        this.setState({ allDates: newDates })
       })
-
     })
 
-    let x = new Date().toISOString(); 
+    let x = new Date().toISOString()
     let y = x.split('T')[0]
     const w = y + 'T00:00:00.000+00:00'
+<<<<<<< HEAD
     this.setState({dateChanged: w})
 
     this.getNewSession();
+=======
+    this.setState({ dateChanged: w })
+
+    this.getNewSession()
+>>>>>>> 5f951055d64f22aa0a33fe7e6367fd698c2d8c44
   }
 
-
-  render(){
-  return (
-    <div>
-
-      <p>Select Date</p>
-      <Cal dates={this.state.allDates}  onSelect={this.dataChange} fill={true} />
-      <Table>
-
-        {
-          this.state.session.length >= 1 ? <TableHeader>
-          <TableRow>
-            <TableCell scope="col" border="bottom">
-              Exercise
-            </TableCell>
-            <TableCell scope="col" border="bottom">
-              Reps
-            </TableCell>
-            <TableCell scope="col" border="bottom">
-              Sets
-            </TableCell>
-            <TableCell scope="col" border="bottom">
-              Weight
-            </TableCell>
-          </TableRow>
-        </TableHeader> : <p>Sorry no information for selected day.</p>
-        }
-        
-        {
-        this.state.session.length >= 1 ?<TableBody>
-        {this.state.session.map((sesh) => {
-          return sesh.workout.map((s) => {
-            return (
+  render() {
+    return (
+      <div>
+        <p>Select Date</p>
+        <Cal
+          dates={this.state.allDates}
+          onSelect={this.dataChange}
+          fill={true}
+        />
+        <Table>
+          {this.state.session.length >= 1 ? (
+            <TableHeader>
               <TableRow>
-                <TableCell scope="row">
-                  <strong>{s.exercise}</strong>
+                <TableCell scope="col" border="bottom">
+                  Exercise
                 </TableCell>
-                <TableCell>{s.reps}</TableCell>
-                <TableCell>{s.sets}</TableCell>
-                <TableCell>{s.weight}</TableCell>
+                <TableCell scope="col" border="bottom">
+                  Reps
+                </TableCell>
+                <TableCell scope="col" border="bottom">
+                  Sets
+                </TableCell>
+                <TableCell scope="col" border="bottom">
+                  Weight
+                </TableCell>
               </TableRow>
-            )
-          })
-        })}
-        
-      </TableBody> : <div/>
-      }
-        
-      </Table>
-      {
-        this.state.session.length >= 1 ? <SessionAppend updateSessions={this.updateSessions} date={this.state.dateChanged}/> : <SessionForm updateSessions={this.updateSessions} date={this.state.dateChanged} />
-      }
-    </div>
-  )
-
-  
+            </TableHeader>
+          ) : (
+            <TableBody>
+              <TableRow>
+                <TableCell>
+                  <p>Sorry no information for selected day.</p>
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          )}
+          {this.state.session.length >= 1 ? (
+            <TableBody>
+              {this.state.session.map((sesh) => {
+                return sesh.workout.map((s) => {
+                  return (
+                    <TableRow>
+                      <TableCell scope="row">
+                        <strong>{s.exercise}</strong>
+                      </TableCell>
+                      <TableCell>{s.reps}</TableCell>
+                      <TableCell>{s.sets}</TableCell>
+                      <TableCell>{s.weight}</TableCell>
+                    </TableRow>
+                  )
+                })
+              })}
+            </TableBody>
+          ) : null}
+        </Table>
+        {this.state.session.length >= 1 ? (
+          <SessionAppend
+            updateSessions={this.updateSessions}
+            date={this.state.dateChanged}
+          />
+        ) : (
+          <SessionForm
+            updateSessions={this.updateSessions}
+            date={this.state.dateChanged}
+          />
+        )}
+      </div>
+    )
+  }
 }
-  
 
-  
-}
-
-export default Calender; 
+export default Calender
