@@ -6,7 +6,6 @@ import Context from '../../Context/User'
 import { Link } from 'react-router-dom'
 
 const Topnav = ({  showLoginForm, setShowLoginForm }) => {
-
   const { userData, setUser } = useContext(Context.Consumer);
   const logout = () => {
     setUser(null)
@@ -23,15 +22,15 @@ const Topnav = ({  showLoginForm, setShowLoginForm }) => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Link className="mr-3" to="/dashboard">
+          {userData ? <Link className="mr-3" to="/dashboard">
             Dashboard
-          </Link>
+          </Link> : <div></div>}
           <Link to="/about">About</Link>
         </Nav>
         {userData ? (
           <>
             <Navbar.Text className="mr-4">
-              Signed in as: {userData.user.username}
+              {userData ? `Signed in as: ${userData.user.username}` : ""}
             </Navbar.Text>
             <Button onClick={logout}>Logout</Button>
           </>

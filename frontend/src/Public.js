@@ -22,7 +22,7 @@ const Public = ({ component: Component, ...rest }) => {
           return (
             <Redirect
               to={{
-                pathname: '/feed',
+                pathname: '/dashboard',
                 state: { from: props.location },
               }}
             />

@@ -22,7 +22,7 @@ const Protected = ({ component: Component, ...rest }) => {
           return (
             <Redirect
               to={{
-                pathname: '/signin',
+                pathname: '/',
                 state: { from: props.location },
               }}
             />
