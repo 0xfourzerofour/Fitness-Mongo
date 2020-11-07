@@ -92,15 +92,9 @@ class Calender extends React.Component {
     let x = new Date().toISOString()
     let y = x.split('T')[0]
     const w = y + 'T00:00:00.000+00:00'
-<<<<<<< HEAD
     this.setState({dateChanged: w})
 
     this.getNewSession();
-=======
-    this.setState({ dateChanged: w })
-
-    this.getNewSession()
->>>>>>> 5f951055d64f22aa0a33fe7e6367fd698c2d8c44
   }
 
   render() {
