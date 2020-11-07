@@ -2,7 +2,7 @@ import Axios from 'axios'
 import React from 'react'
 import './Dashboard.css'
 import Calender from '../Calender/Calender'
-import {Jumbotron, Container} from 'react-bootstrap';
+import {Jumbotron, Container, Row, Col} from 'react-bootstrap';
 import InfoCard from '../InfoCard/InfoCard';
 
 class Dashboard extends React.Component {
@@ -35,8 +35,17 @@ class Dashboard extends React.Component {
   </Container>
 </Jumbotron>
 <Container>
-  <InfoCard/>
+  <Row>
+    <Col sm={4}>
+    <InfoCard/>
+    </Col>
+<Col sm={8}>
 <Calender />
+</Col>
+
+
+  </Row>
+
 </Container>
       </div>
     )

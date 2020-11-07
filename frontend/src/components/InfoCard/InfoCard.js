@@ -4,6 +4,8 @@ import {Link} from 'react-router-dom'
 
 import {Card, Nav, Image, Row, Col, Button} from 'react-bootstrap';
 
+import './info.css'
+
 import Context from '../../Context/User'; 
 
 export default class InfoCard extends Component {
@@ -14,7 +16,7 @@ export default class InfoCard extends Component {
   render() {
     return (
       <div>
-      <Card style={{ width: '18rem' }}>
+      <Card className="infocard">
   <Card.Img variant="top" src={`http://localhost:5000/${this.context.userData.user.image}`} />
   <Card.Body>
     <Card.Title>{this.context.userData.user.username}</Card.Title>

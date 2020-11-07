@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useContext } from 'react'
 import InputGroup from 'react-bootstrap/InputGroup'
 import FormControl from 'react-bootstrap/FormControl'
 import Button from 'react-bootstrap/Button'
@@ -10,9 +10,14 @@ import {
   TableHeader,
   TableRow,
 } from 'grommet'
+
+import Context from '../../Context/User';
 import Axios from 'axios'
 
 export default class SessionForm extends Component {
+
+  static contextType = Context; 
+
   constructor(props) {
     super(props)
 
@@ -165,3 +170,6 @@ export default class SessionForm extends Component {
     )
   }
 }
+
+
+

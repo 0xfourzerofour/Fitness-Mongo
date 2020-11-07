@@ -10,11 +10,11 @@ import {
   TableRow,
 } from 'grommet'
 
+import {Alert} from 'react-bootstrap';
+
 import SessionForm from '../SessionForm/SessionForm'
 import SessionAppend from '../SessionAppend/SessionAppend'
 import ChartView from '../chartView/ChartView'
-
-// test
 
 class Calender extends React.Component {
   constructor(props) {
@@ -114,6 +114,8 @@ class Calender extends React.Component {
     })
 
     this.getNewSession(y)
+
+    console.log(y)
   }
 
   componentDidMount() {
@@ -152,12 +154,20 @@ class Calender extends React.Component {
           chartExerciseData={this.state.chartExerciseData}
         />
         <div>
-          <p>Select Date</p>
+     
           <Cal
+          fill
             date={this.state.date}
             onSelect={this.dataChange}
             style={{ margin: '0 auto' }}
           />
+          {
+            this.state.session.length >= 1 ?  <Alert style={{marginTop: 10}} variant="primary" >
+            click on the exercise name to view analytics!
+           </Alert> : <div/>
+          }
+         
+
           <Table>
             {this.state.session.length >= 1 ? (
               <TableHeader>
