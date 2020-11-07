@@ -40,7 +40,7 @@ Users can:
 A summary of what your next steps would be if you were to continue the project
 
 ## Roles and responsibilities
-A summary of the main roles and contributions of each team member and how you managed interaction and communication through the project
+A summary of the main roles and contributions of each team member and how we managed interaction and communication through the project.
 ### Frontend
 > Julian and Swarnim
 
