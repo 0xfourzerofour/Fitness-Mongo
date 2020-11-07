@@ -61,6 +61,8 @@ router.route('/currentuser').get(verify, (req, res) => {
       res.json({
         id: user._id,
         username: user.username,
+        image: user.imageUrl,
+        created: user.createdAt
       })
     )
     .catch((err) => res.status(400).json('Error: ' + err))
@@ -83,6 +85,14 @@ router.route('/search').post(verify, (req, res) => {
   User.find({
     username: regex,
   })
+
+    .then((users) => res.json(users))
+    .catch((err) => res.status(400).json('Error: ' + err))
+})
+
+router.route('/searchall').get(verify, (req, res) => {
+
+  User.find()
 
     .then((users) => res.json(users))
     .catch((err) => res.status(400).json('Error: ' + err))

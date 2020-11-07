@@ -147,7 +147,7 @@ class Calender extends React.Component {
           chartExerciseData={this.state.chartExerciseData}
         />
         <div>
-          <p>Select Date</p>
+          
           <Cal date={this.state.date} onSelect={this.dataChange} fill={true} />
           <Table>
             {this.state.session.length >= 1 ? (

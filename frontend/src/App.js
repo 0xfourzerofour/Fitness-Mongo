@@ -11,6 +11,8 @@ import About from './components/about/About'
 import Dashboard from './components/dashboard/Dashboard'
 import Public from './Public'
 import Protected from './Protected'
+import Settings from './components/Settings/Settings'
+import Search from './components/Search/Search'
 import Axios from 'axios'
 
 //comment
@@ -58,6 +60,8 @@ function App() {
           user: {
             id: user.data.id,
             username: user.data.username,
+            image: user.data.image,
+            created: user.data.created
           },
         })
       }
@@ -94,6 +98,8 @@ function App() {
         <Public path="/" exact component={Home} />
         <Route path="/about" exact component={About} />
         <Protected path="/dashboard" exact component={Dashboard} />
+        <Protected path="/settings" exact component={Settings} />
+        <Protected path="/search" exact component={Search} />
       </Switch>
     </Context.Provider>
   )

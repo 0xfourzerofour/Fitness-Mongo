@@ -25,8 +25,12 @@ const Topnav = ({  showLoginForm, setShowLoginForm }) => {
           {userData ? <Link className="mr-3" to="/dashboard">
             Dashboard
           </Link> : <div></div>}
+          {userData ? <Link className="mr-3" to="/search">
+            Search
+          </Link> : <div></div>}
           <Link to="/about">About</Link>
         </Nav>
+        
         {userData ? (
           <>
             <Navbar.Text className="mr-4">

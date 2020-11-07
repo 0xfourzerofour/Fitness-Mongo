@@ -38,6 +38,8 @@ const LoginForm = ({
       user: {
         id: user.id,
         username: user.username,
+        created: user.created, 
+        image: user.image
       },
     })
     
