@@ -3,8 +3,6 @@ let session = require('../models/session.model');
 
 const verify = require ('./verify'); 
 
-
-
 router.route('/new').post(verify, async (req, res) => {
 
   const newsession = new session({
