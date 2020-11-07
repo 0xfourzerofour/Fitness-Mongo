@@ -1,0 +1,3 @@
+GET http://localhost:5000/session/allexercises/
+auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmOTUxNWViYTFlNWEyMTY2MDI5Nzg1NiIsImlhdCI6MTYwNDcxNjc0MX0.Ts3C_pFr5wnnA9Ck9cEKG7TluBHveQS4N0rWwe7NaHE
+

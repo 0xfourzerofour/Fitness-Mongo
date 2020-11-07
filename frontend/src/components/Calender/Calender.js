@@ -11,6 +11,7 @@ import {
 
 import SessionForm from '../SessionForm/SessionForm'
 import SessionAppend from '../SessionAppend.js/SessionAppend'
+import ChartView from '../chartView/ChartView'
 
 // test
 
@@ -19,6 +20,8 @@ class Calender extends React.Component {
     super(props)
 
     this.state = {
+      showChartView: false,
+      chartExerciseData: { dates: [], weight: [] },
       date: new Date().toISOString(),
       dateChanged: '',
       session: [],
@@ -29,16 +32,18 @@ class Calender extends React.Component {
 
     this.dataChange = this.dataChange.bind(this)
     this.updateSessions = this.updateSessions
+
+    this.toggleChartView = this.toggleChartView.bind(this)
+    this.handleExerciseClick = this.handleExerciseClick.bind(this)
   }
 
-  getNewSession = () => {
+  getNewSession = (date) => {
     Axios.get('http://localhost:5000/session/sessionbydate', {
       headers: {
         'auth-token': localStorage.getItem('auth-token'),
-        sessionDate: this.state.dateChanged,
+        sessionDate: date,
       },
     }).then((res) => {
-      console.log(res)
       this.setState({ session: res.data })
     })
   }
@@ -54,17 +59,56 @@ class Calender extends React.Component {
     })
   }
 
+  toggleChartView() {
+    this.setState({
+      showChartView: !this.state.showChartView,
+    })
+  }
+
+  handleExerciseClick(exercise) {
+    Axios.get('http://localhost:5000/session/allexercises', {
+      headers: {
+        'auth-token': localStorage.getItem('auth-token'),
+        exercise: exercise,
+      },
+    }).then((res) => {
+      let responseDates = res.data.map((item) => {
+        var options = {
+          year: 'numeric',
+          month: 'numeric',
+          day: 'numeric',
+        }
+        var val = new Date(item.date)
+        return val.toLocaleDateString('en-AU', options)
+      })
+      let responseWeight = res.data.map(
+        (item) =>
+          item.workout.filter((exer) => exer.exercise === exercise)[0].weight
+      )
+      this.setState({
+        chartExerciseData: {
+          name: exercise,
+          dates: responseDates,
+          weight: responseWeight,
+        },
+        showChartView: !this.state.showChartView,
+      })
+    })
+  }
+
   dataChange = (e) => {
     let x = e.split('T')[0]
 
     const y = x + 'T00:00:00.000+00:00'
+
+    console.log('y', y)
 
     this.setState({
       date: e,
       dateChanged: y,
     })
 
-    this.getNewSession()
+    this.getNewSession(y)
   }
 
   componentDidMount() {
@@ -76,9 +120,6 @@ class Calender extends React.Component {
       //all dates with sessions added to them
       //current issue with Grommet dates implementation,
       //I have lodged a github issue
-
-      console.log(res)
-
       var newDates = []
       res.data.forEach((item) => {
         if (item.date != null) {
@@ -92,78 +133,85 @@ class Calender extends React.Component {
     let x = new Date().toISOString()
     let y = x.split('T')[0]
     const w = y + 'T00:00:00.000+00:00'
-    this.setState({dateChanged: w})
+    this.setState({ dateChanged: w })
 
-    this.getNewSession();
+    this.getNewSession(w)
   }
 
   render() {
     return (
-      <div>
-        <p>Select Date</p>
-        <Cal
-          dates={this.state.allDates}
-          onSelect={this.dataChange}
-          fill={true}
+      <>
+        <ChartView
+          toggleChartView={this.toggleChartView}
+          showChartView={this.state.showChartView}
+          chartExerciseData={this.state.chartExerciseData}
         />
-        <Table>
+        <div>
+          <p>Select Date</p>
+          <Cal date={this.state.date} onSelect={this.dataChange} fill={true} />
+          <Table>
+            {this.state.session.length >= 1 ? (
+              <TableHeader>
+                <TableRow>
+                  <TableCell scope="col" border="bottom">
+                    Exercise
+                  </TableCell>
+                  <TableCell scope="col" border="bottom">
+                    Sets
+                  </TableCell>
+                  <TableCell scope="col" border="bottom">
+                    Reps
+                  </TableCell>
+                  <TableCell scope="col" border="bottom">
+                    Weight
+                  </TableCell>
+                </TableRow>
+              </TableHeader>
+            ) : (
+              <TableBody>
+                <TableRow>
+                  <TableCell>
+                    <p>Sorry no information for selected day.</p>
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+            )}
+            {this.state.session.length >= 1 ? (
+              <TableBody>
+                {this.state.session.map((sesh) => {
+                  return sesh.workout.map((s) => {
+                    return (
+                      <TableRow key={s.exercise}>
+                        <TableCell
+                          scope="row"
+                          style={{ cursor: 'pointer' }}
+                          onClick={() => this.handleExerciseClick(s.exercise)}
+                        >
+                          <strong>{s.exercise}</strong>
+                        </TableCell>
+                        <TableCell>{s.sets}</TableCell>
+                        <TableCell>{s.reps}</TableCell>
+                        <TableCell>{s.weight}</TableCell>
+                      </TableRow>
+                    )
+                  })
+                })}
+              </TableBody>
+            ) : null}
+          </Table>
           {this.state.session.length >= 1 ? (
-            <TableHeader>
-              <TableRow>
-                <TableCell scope="col" border="bottom">
-                  Exercise
-                </TableCell>
-                <TableCell scope="col" border="bottom">
-                  Reps
-                </TableCell>
-                <TableCell scope="col" border="bottom">
-                  Sets
-                </TableCell>
-                <TableCell scope="col" border="bottom">
-                  Weight
-                </TableCell>
-              </TableRow>
-            </TableHeader>
+            <SessionAppend
+              updateSessions={this.updateSessions}
+              date={this.state.dateChanged}
+            />
           ) : (
-            <TableBody>
-              <TableRow>
-                <TableCell>
-                  <p>Sorry no information for selected day.</p>
-                </TableCell>
-              </TableRow>
-            </TableBody>
+            <SessionForm
+              updateSessions={this.updateSessions}
+              date={this.state.dateChanged}
+            />
           )}
-          {this.state.session.length >= 1 ? (
-            <TableBody>
-              {this.state.session.map((sesh) => {
-                return sesh.workout.map((s) => {
-                  return (
-                    <TableRow>
-                      <TableCell scope="row">
-                        <strong>{s.exercise}</strong>
-                      </TableCell>
-                      <TableCell>{s.reps}</TableCell>
-                      <TableCell>{s.sets}</TableCell>
-                      <TableCell>{s.weight}</TableCell>
-                    </TableRow>
-                  )
-                })
-              })}
-            </TableBody>
-          ) : null}
-        </Table>
-        {this.state.session.length >= 1 ? (
-          <SessionAppend
-            updateSessions={this.updateSessions}
-            date={this.state.dateChanged}
-          />
-        ) : (
-          <SessionForm
-            updateSessions={this.updateSessions}
-            date={this.state.dateChanged}
-          />
-        )}
-      </div>
+        </div>
+      </>
     )
   }
 }

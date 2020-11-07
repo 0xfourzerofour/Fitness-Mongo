@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken')
 
 //This is where I created a middleware function that can be passed in and
 //run before the API request is processed. We check to see if the users
@@ -6,21 +6,21 @@ const jwt = require('jsonwebtoken');
 //in our .env and then extract the user id
 
 function auth(req, res, next) {
-  const token = req.header('auth-token');
+  const token = req.header('auth-token')
 
   if (!token) {
-    return res.status(401).send('not authorised');
+    return res.status(401).send('not authorised')
   }
 
   try {
-    const verified = jwt.verify(token, process.env.TOKEN_SECRET);
+    const verified = jwt.verify(token, process.env.TOKEN_SECRET)
 
-    req.user = verified.id;
+    req.user = verified.id
 
-    next();
+    next()
   } catch (err) {
-    res.status(400).send('invalid token');
+    res.status(400).send('invalid token')
   }
 }
 
-module.exports = auth;
+module.exports = auth
