@@ -2,6 +2,7 @@ import Axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import {
   Calendar as Cal,
+  Box,
   Table,
   TableBody,
   TableCell,
@@ -151,8 +152,12 @@ class Calender extends React.Component {
           chartExerciseData={this.state.chartExerciseData}
         />
         <div>
-          
-          <Cal date={this.state.date} onSelect={this.dataChange} fill={true} />
+          <p>Select Date</p>
+          <Cal
+            date={this.state.date}
+            onSelect={this.dataChange}
+            style={{ margin: '0 auto' }}
+          />
           <Table>
             {this.state.session.length >= 1 ? (
               <TableHeader>
@@ -175,7 +180,7 @@ class Calender extends React.Component {
               <TableBody>
                 <TableRow>
                   <TableCell>
-                    <p>Sorry no information for selected day.</p>
+                    <p>No exercises on this day!</p>
                   </TableCell>
                 </TableRow>
               </TableBody>

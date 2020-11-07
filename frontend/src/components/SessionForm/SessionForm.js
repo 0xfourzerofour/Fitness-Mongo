@@ -152,14 +152,15 @@ export default class SessionForm extends Component {
                 </Button>
               </TableCell>
             </TableRow>
+            {this.state.workout.length >= 1 ? (
+              <TableRow>
+                <TableCell scope="row">
+                  <Button onClick={this.postWorkout}>Post Workout</Button>
+                </TableCell>
+              </TableRow>
+            ) : null}
           </TableBody>
         </Table>
-
-        {this.state.workout.length >= 1 ? (
-          <Button onClick={this.postWorkout}>Post Workout</Button>
-        ) : (
-          <div />
-        )}
       </div>
     )
   }
