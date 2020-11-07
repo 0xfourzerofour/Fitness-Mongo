@@ -18,9 +18,17 @@ The website operates cohesively with the frontend and the backend servers. The t
 
 **Visual**
 
+<<<<<<< HEAD
 **Integration**
 
 **Frontend integration**
+=======
+Visually the website shows a calender on the landing page and prompts the user to log in before conitnuing their exploration of the website. If the user is new, registering for the website is recommended. A dashboard with a navigation bar is shown with the user name and avatar once the user is logged in. The user can then choose a date for themselves to add the corresponding workout. Dates with an already added workout session have a different appearance so the users can keep easy track of the days they worked out.
+
+**Integration** 
+ 
+**Frontend integration** 
+>>>>>>> ac47c1c0c0e4501361799b69a46a0977a497ea52
 
 Frontend integration involves the forms and services which the user can view and access on the website. One of the main aims of the website is for the user to keep track of their workouts, thus, a calendar will be visible on the landing page. A feature with which the user can add exercises, reps, sets for each day is provided.
 
@@ -44,11 +52,20 @@ Back-end handles the “behind-the-scenes” server-side of the website.
 
 - The models produced in the backend have schema imported from mongoose. The exercise schema has the ability to store string variables. This was done keeping in mind that the users would have to type the workouts they want to store. A maximum length of the string, being 250 characters is defined. It is to be noted that since different workouts can be added separately for the days, not more than 250 characters would be needed by the user. The **usermodel.js** adds an image option for the user. This acts as an avatar for the user. Images in the backend are stored under the images folder.
 
+<<<<<<< HEAD
 - Routes are developed in the "routes" folder from the backend. The authorisation route is called on the signin page so that we can check if the username and password match a user in the database. We are using **bcrypt** compare fucntion to check if the hashed password is correct compared to the parsed password. **Auth.js** initiates the JWT token to be stored on the frntend and sign it with the user id so that we can extract that infromation using our verify middleware. Functins verifying username, id and authorisation details are defined in this file.
 
 - The file **verify.js** is used for the creation of a verifying middleware function. This function can be passed in and run before the API request is processed. The main function checks to see if the user's auth-token can be verified against the TOKEN_SECRET that is stored in the .env file. Once this verification is done, userid can be extracted.
 
 - The verifying middleware mentioned before needs to be coded in the routes folder. The file **posts.js** is used to import the verifying middleware that allows us to check and see whether the users pass a valid auth-token to the request. As an outcome, all requests which fail verification or do not have a valid token will be denied. The function defined in the file also activates when a user tries to add in a new workout exercise and it is to be added to the database as well. The function extracts all content from the request body and also checks to see how long the text is as it shouldn't exceed 250 character per the previous conditions defined.
+=======
+- The verifying middleware mentioned before needs to be coded in the routes folder. The file **posts.js** is used to import the verifying middleware that allows us to check and see whether the users pass a valid auth-token to the request. As an outcome, all requests which fail verification or do not have a valid token will be denied. The function defined in the file also activates when a user tries to add in a new workout exercise and it is to be added to the database as well. The function extracts all content from the request body and also checks to see how long the text is as it shouldn't exceed 250 character per the previous conditions defined. 
+
+- A main aim of this website project is to make it user-interactive and personal. The incentive was met by allowing users to add images to the website as avatars. The file **users.js** is used to specify the location to store the images on the server and to automatically name the files based on their original name and current timestamp. This prevents any duplicates and saves the database from being too crowded. One of the functions defined in this file include an API request which takes the request username and returns all information about the requested user, excluding, of course, the hashed password information. This is shown in a '/userdetails' API. In a similar fashion, requests regarding user id based on their username is also defined ('/id'). User.findById makes a request to the verifying middleware function to extract user information based on their id. This function gets called in the App.js file on load as well. The function escapeRegex is a regular expression function created to help with the search route so that a fuzzy search could be implemented and we can pass the regular expression into the find function based on username matchs. A user creation route is also defined in the users.js file which comes into play When a user registers with the application. The function first extracts the username, password, bio and image from the form data and then convert the username to lowercase so that all users are lowercase. Afterwards, the bcrypt library is used to store passwords in the database in a hashed manner instead of plain text. Multer is used to get an image path from the uploaded image as a middleware to create the path and store the file before the request is processed. The function User.updateOne builds a route to take the current user from the auth-token and adds them in the requested username to the corresponding array.
+
+- Further routes include **programs.js** and **session.js**. Programs.js creates a route request to create a new program whereas session.js builds a route to session definition for the user. This file includes the creation of a new session and saves the session. The function also has catch(error) so as to not crash the whole website in case of an error. Functions which requests to get workouts for the user from auth-token id, update workouts and adds a session by date are also implemented. 
+ 
+>>>>>>> ac47c1c0c0e4501361799b69a46a0977a497ea52
 
 - A main aim of this website project is to make it user-interactive and personal. The incentive was met by allowing users to add images to the website as avatars. The file **users.js** is used to specify the location to store the images on the server and to automatically name the files based on their original name and current timestamp. This prevents any duplicates and saves the database from being too crowded. One of the functions defined in this file include an API request which takes the request username and returns all information about the requested user, excluding, of course, the hashed password information. This is shown in a '/userdetails' API. In a similar fashion, requests regarding user id based on their username is also defined ('/id'). User.findById makes a request to the verifying middleware function to extract user information based on their id. This function gets called in the App.js file on load as well.
 

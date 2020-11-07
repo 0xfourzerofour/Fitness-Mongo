@@ -72,19 +72,25 @@ class Calender extends React.Component {
         exercise: exercise,
       },
     }).then((res) => {
-      let responseDates = res.data.map((item) => {
+      let responseData = res.data.map((item) => {
         var options = {
-          year: 'numeric',
           month: 'numeric',
           day: 'numeric',
         }
         var val = new Date(item.date)
-        return val.toLocaleDateString('en-AU', options)
+        return {
+          date: val.toLocaleDateString('en-AU', options),
+          weight: item.workout.filter((exer) => exer.exercise === exercise)[0]
+            .weight,
+        }
       })
-      let responseWeight = res.data.map(
-        (item) =>
-          item.workout.filter((exer) => exer.exercise === exercise)[0].weight
-      )
+      responseData.sort(function (a, b) {
+        // Turn your strings into dates, and then subtract them
+        // to get a value that is either negative, positive, or zero.
+        return new Date(a.date) - new Date(b.date)
+      })
+      let responseDates = responseData.map((item) => item.date)
+      let responseWeight = responseData.map((item) => item.weight)
       this.setState({
         chartExerciseData: {
           name: exercise,
@@ -100,8 +106,6 @@ class Calender extends React.Component {
     let x = e.split('T')[0]
 
     const y = x + 'T00:00:00.000+00:00'
-
-    console.log('y', y)
 
     this.setState({
       date: e,

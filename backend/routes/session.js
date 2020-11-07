@@ -66,8 +66,6 @@ router.route('/allexercises').get(verify, (req, res) => {
       }
     )
     .then((resp) => {
-      console.log(resp)
-
       res.json(resp)
     })
     .catch((err) => {
