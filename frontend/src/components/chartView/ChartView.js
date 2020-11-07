@@ -44,6 +44,7 @@ class ChartView extends React.Component {
       <Modal
         show={this.props.showChartView}
         onHide={this.props.toggleChartView}
+        size="lg"
       >
         <Modal.Header closeButton>
           <Modal.Title>Progress</Modal.Title>
