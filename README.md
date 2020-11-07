@@ -1,7 +1,5 @@
 # Fit - A fitness web app
 
-An outline of the application you were aiming to build, target users, data sources etc (similar to the proposal)
-
 ## Outline
 Our proposed web application is a fitness tracking web application in which users
 can create an account, build a program of exercises and track their progress for each
@@ -40,7 +38,6 @@ Users can:
 A summary of what your next steps would be if you were to continue the project
 
 ## Roles and responsibilities
-A summary of the main roles and contributions of each team member and how we managed interaction and communication through the project.
 ### Frontend
 > Julian and Swarnim
 
