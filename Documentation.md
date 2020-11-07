@@ -70,5 +70,3 @@ Back-end handles the “behind-the-scenes” server-side of the website.
 - A main aim of this website project is to make it user-interactive and personal. The incentive was met by allowing users to add images to the website as avatars. The file **users.js** is used to specify the location to store the images on the server and to automatically name the files based on their original name and current timestamp. This prevents any duplicates and saves the database from being too crowded. One of the functions defined in this file include an API request which takes the request username and returns all information about the requested user, excluding, of course, the hashed password information. This is shown in a '/userdetails' API. In a similar fashion, requests regarding user id based on their username is also defined ('/id'). User.findById makes a request to the verifying middleware function to extract user information based on their id. This function gets called in the App.js file on load as well.
 
 The function escapeRegex is a regular expression function created to helpl with the search route so that a fuzzy search could be implemented.
-
-- Further routes include
