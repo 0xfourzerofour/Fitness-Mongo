@@ -5,8 +5,11 @@ import Calender from '../Calender/Calender'
 import {Table, TableCell, TableRow, TableHeader, TableBody} from 'grommet';
 import {Jumbotron, Container, Row, Col, ListGroup} from 'react-bootstrap';
 import InfoCard from '../InfoCard/InfoCard';
+import Context from '../../Context/User';
 
 class Dashboard extends React.Component {
+
+  static contextType = Context; 
   constructor(props) {
     super(props)
     this.state = {
@@ -17,7 +20,7 @@ class Dashboard extends React.Component {
   componentDidMount() {
     Axios.get('http://localhost:5000/session/usersessions', {
       headers: {
-        'auth-token': localStorage.getItem('auth-token'),
+        'auth-token': this.context.userData.token,
       },
     }).then((res) => {
       this.setState({
@@ -49,8 +52,7 @@ class Dashboard extends React.Component {
 
 </Container>
 <Container>
-
-<Table style={{marginTop: 20, marginBottom: 20, color: "white", padding: 20,  background: '#343a40'}} >
+<Table className="dash-table" style={{marginTop: 20, marginBottom: 20, color: "white", padding: 20,  background: '#343a40'}} >
   <TableHeader>
     <TableRow>
       <TableCell><b>Date</b></TableCell>

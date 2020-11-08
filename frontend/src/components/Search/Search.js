@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import {Jumbotron, Container, Form, FormGroup, FormControl, InputGroup, Button, ListGroup} from 'react-bootstrap';
+import {Jumbotron, Container, Form, FormGroup, FormControl, InputGroup, Button, ListGroup, Image} from 'react-bootstrap';
 import Context from '../../Context/User';
 
 import Axios from 'axios';
@@ -82,7 +82,7 @@ export default class Settings extends Component {
 
   <ListGroup variant="flush">
     {this.state.users.map(user => {
-      return <ListGroup.Item> <b>{user.username} </b> - {user.sessions} workouts Logged since {user.createdAt.split("T")[0]}</ListGroup.Item>
+      return <ListGroup.Item><Image style={{width: 50}} roundedCircle src={`http://localhost:5000/${user.imageUrl}`}/> <b>{user.username} </b> - {user.sessions} workouts Logged since {user.createdAt.split("T")[0]}</ListGroup.Item>
     })}
   
 </ListGroup>

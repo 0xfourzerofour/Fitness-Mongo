@@ -124,7 +124,7 @@ export default class SessionAppend extends Component {
             <TableRow>
               <TableCell scope="row">
                 <Button variant="primary" onClick={this.handleAddWorkout}>
-                  Add exercise
+                  Add exercise to existing workout
                 </Button>
               </TableCell>
             </TableRow>

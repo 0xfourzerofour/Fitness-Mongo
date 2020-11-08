@@ -37,7 +37,8 @@ router.route('/login').post(async (req, res) => {
     id: user._id,
     username: user.username,
     created: user.createdAt,
-    image: user.imageUrl
+    image: user.imageUrl,
+    sessions: user.sessions
   })
 })
 

@@ -20,6 +20,51 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage })
 
+router.route('/updateusername').patch(verify, (req,res) => {
+
+  User.updateOne({_id: req.user}, {
+    username: req.body.username
+  }).then(resp => {
+    res.json(resp)
+  }).catch(err => {
+    res.json(err)
+  })
+
+
+}); 
+
+router.route('/updateavatar').patch(verify,upload.single('image'), (req,res) => {
+
+  const imageUrl = req.file.path
+
+  User.updateOne({_id: req.user}, {
+    imageUrl
+  }).then(resp => {
+    res.json(imageUrl)
+  }).catch(err => {
+    res.json(err)
+  })
+
+
+}); 
+
+
+router.route('/updatepassword').patch(verify, async (req,res) => {
+
+  const salt = await bcrypt.genSalt(10)
+  const hashPassword = await bcrypt.hash(req.body.password, salt)
+
+  User.updateOne({_id: req.user}, {
+    password: hashPassword
+  }).then(resp => {
+    res.json(resp)
+  }).catch(err => {
+    res.json(err)
+  })
+
+
+}); 
+
 
 
 //This route returns the current user based on the ID that is returned
@@ -60,12 +105,9 @@ router.route('/search').post(verify, (req, res) => {
     .catch((err) => res.status(400).json('Error: ' + err))
 })
 
-
-
 router.route('/searchall').get(verify, async (req, res) => {
 
   User.find()
-
     .then((users) => res.json(users))
     .catch((err) => res.status(400).json('Error: ' + err))
 })
