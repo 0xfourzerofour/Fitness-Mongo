@@ -55,6 +55,7 @@ export default class SessionAppend extends Component {
         })
 
         this.props.updateSessions()
+        this.props.reload();
       })
       .catch((err) => {
         console.log(err)

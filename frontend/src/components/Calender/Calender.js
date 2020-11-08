@@ -222,11 +222,13 @@ class Calender extends React.Component {
             <SessionAppend
               updateSessions={this.updateSessions}
               date={this.state.dateChanged}
+              reload={this.props.reload}
             />
           ) : (
             <SessionForm
               updateSessions={this.updateSessions}
               date={this.state.dateChanged}
+              reload={this.props.reload}
             />
           )}
         </div>

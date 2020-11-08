@@ -15,6 +15,8 @@ class Dashboard extends React.Component {
     this.state = {
       userSessions: [],
     }
+
+    this.reload = this.reload
   }
 
   componentDidMount() {
@@ -27,6 +29,19 @@ class Dashboard extends React.Component {
         userSessions: res.data,
       })
     })
+  }
+
+  reload = () => {
+    Axios.get('http://localhost:5000/session/usersessions', {
+      headers: {
+        'auth-token': this.context.userData.token,
+      },
+    }).then((res) => {
+      this.setState({
+        userSessions: res.data,
+      })
+    })
+
   }
 
   render() {
@@ -44,7 +59,7 @@ class Dashboard extends React.Component {
     <InfoCard/>
     </Col>
 <Col sm={8}>
-<Calender />
+<Calender reload={this.reload} />
 </Col>
 
 
