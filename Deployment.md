@@ -52,3 +52,5 @@ server {
 ```
 
 **Link of the deployed website**
+
+http://ec2-3-131-142-39.us-east-2.compute.amazonaws.com

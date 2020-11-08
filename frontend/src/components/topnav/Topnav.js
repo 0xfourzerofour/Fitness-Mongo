@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import './Topnav.css'
 import Navbar from 'react-bootstrap/Navbar'
+import NavItem from 'react-bootstrap/NavItem'
 import Nav from 'react-bootstrap/Nav'
 import Button from 'react-bootstrap/Button'
 import Context from '../../Context/User'
@@ -24,26 +25,45 @@ const Topnav = ({ showLoginForm, setShowLoginForm }) => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          {userData ? <Link className="mr-3" to="/dashboard">
-            Dashboard
-          </Link> : <div></div>}
-          {userData ? <Link className="mr-3" to="/search">
-            Search
-          </Link> : <div></div>}
-          <Link to="/about">About</Link>
+          {userData ? (
+            <NavItem eventkey={1} href="/dashboard">
+              <Nav.Link as={Link} className="navlink" to="/dashboard">
+                Dashboard
+              </Nav.Link>
+            </NavItem>
+          ) : (
+            <div></div>
+          )}
+          {userData ? (
+            <NavItem eventkey={1} href="/search">
+              <Nav.Link as={Link} className="navlink" to="/search">
+                Search
+              </Nav.Link>
+            </NavItem>
+          ) : (
+            <div></div>
+          )}
+          <NavItem eventkey={1} href="/about">
+            <Nav.Link as={Link} className="navlink" to="/about">
+              About
+            </Nav.Link>
+          </NavItem>
         </Nav>
-        
         {userData ? (
-          <>
-            <Navbar.Text className="mr-4">
-              {userData != null ? `Signed in as: ${userData.user.username}` : ""}
-            </Navbar.Text>
+          <Navbar.Text className="mr-4">
+            {userData != null ? `Signed in as: ${userData.user.username}` : ''}
+          </Navbar.Text>
+        ) : null}
+        {userData ? (
+          <Form>
             <Button onClick={logout}>Logout</Button>
-          </>
+          </Form>
         ) : (
-          <Button onClick={() => setShowLoginForm(!showLoginForm)}>
-            Login
-          </Button>
+          <Form>
+            <Button onClick={() => setShowLoginForm(!showLoginForm)}>
+              Login
+            </Button>
+          </Form>
         )}
       </Navbar.Collapse>
     </Navbar>

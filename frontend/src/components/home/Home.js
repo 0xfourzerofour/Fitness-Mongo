@@ -14,7 +14,6 @@ const Home = () => {
             src="api/images/fitness2.png"
             alt="Third slide"
           />
-
           <Carousel.Caption>
             <h3>See your Progression</h3>
             <p>
@@ -28,7 +27,6 @@ const Home = () => {
             src="api/images/fitness3.png"
             alt="Third slide"
           />
-
           <Carousel.Caption>
             <h3>Track your Workouts</h3>
             <p>Log workouts as you go</p>
