@@ -1,4 +1,4 @@
-Deployment for this site was implemented by setting up an Amazon Ec2 intance and creating a github action to then make a build of the applicaiton whenever there is a push to the master branch on git. 
+Deployment for this site was implemented by setting up an Amazon Ec2 intance and creating a github action to then make a build of the applicaiton whenever there is a push to the master branch on git.
 
 NGNIX was used to act as a reverse proxy between the
 frontend routes and the '/api' routes.
@@ -46,11 +46,9 @@ server {
 
   # node api reverse proxy
   location /api/ {
-    proxy_pass http://localhost:5000;
+    proxy_pass api;
   }
 }
 ```
-
-
 
 **Link of the deployed website**

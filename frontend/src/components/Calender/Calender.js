@@ -39,7 +39,7 @@ class Calender extends React.Component {
   }
 
   getNewSession = (date) => {
-    Axios.get('http://localhost:5000/session/sessionbydate', {
+    Axios.get('api/session/sessionbydate', {
       headers: {
         'auth-token': localStorage.getItem('auth-token'),
         sessionDate: date,
@@ -50,7 +50,7 @@ class Calender extends React.Component {
   }
 
   updateSessions = () => {
-    Axios.get('http://localhost:5000/session/sessionbydate', {
+    Axios.get('api/session/sessionbydate', {
       headers: {
         'auth-token': localStorage.getItem('auth-token'),
         sessionDate: this.state.dateChanged,
@@ -67,7 +67,7 @@ class Calender extends React.Component {
   }
 
   handleExerciseClick(exercise) {
-    Axios.get('http://localhost:5000/session/allexercises', {
+    Axios.get('api/session/allexercises', {
       headers: {
         'auth-token': localStorage.getItem('auth-token'),
         exercise: exercise,
@@ -119,7 +119,7 @@ class Calender extends React.Component {
   }
 
   componentDidMount() {
-    Axios.get('http://localhost:5000/session/alldates', {
+    Axios.get('api/session/alldates', {
       headers: {
         'auth-token': localStorage.getItem('auth-token'),
       },

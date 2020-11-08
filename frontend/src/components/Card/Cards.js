@@ -7,7 +7,7 @@ export default class Cards extends Component {
     return (
       <CardGroup>
         <Card>
-          <Card.Img variant="top" src="http://localhost:5000/images/fit1.png" />
+          <Card.Img variant="top" src="api/images/fit1.png" />
           <Card.Body>
             <Card.Title>"I lost 15kg in 6 months."</Card.Title>
             <Card.Text>
@@ -17,7 +17,7 @@ export default class Cards extends Component {
           </Card.Body>
         </Card>
         <Card>
-          <Card.Img variant="top" src="http://localhost:5000/images/fit2.png" />
+          <Card.Img variant="top" src="api/images/fit2.png" />
           <Card.Body>
             <Card.Title>
               "My confidence was increased after using Fit."
@@ -30,7 +30,7 @@ export default class Cards extends Component {
           </Card.Body>
         </Card>
         <Card>
-          <Card.Img variant="top" src="http://localhost:5000/images/fit3.png" />
+          <Card.Img variant="top" src="api/images/fit3.png" />
           <Card.Body>
             <Card.Title>"Now all my friends use it."</Card.Title>
             <Card.Text>

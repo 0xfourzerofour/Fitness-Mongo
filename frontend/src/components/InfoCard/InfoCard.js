@@ -17,7 +17,7 @@ export default class InfoCard extends Component {
     return (
       <div>
       <Card className="infocard">
-  <Card.Img variant="top" src={`http://localhost:5000/${this.context.userData.user.image}`} />
+  <Card.Img variant="top" src={`api/${this.context.userData.user.image}`} />
   <Card.Body>
     <Card.Title>{this.context.userData.user.username}</Card.Title>
     <Card.Text>

@@ -28,7 +28,7 @@ function App() {
       }
 
       const tokenValid = await Axios.post(
-        'http://localhost:5000/auth/validatetoken/',
+        'api/auth/validatetoken/',
         null,
         {
           headers: {
@@ -39,7 +39,7 @@ function App() {
 
       if (tokenValid.data) {
         const user = await Axios.get(
-          'http://localhost:5000/users/currentuser/',
+          'api/users/currentuser/',
           {
             headers: {
               'auth-token': token,

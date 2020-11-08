@@ -11,7 +11,7 @@ const Home = () => {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src="http://localhost:5000/images/fitness2.png"
+            src="api/images/fitness2.png"
             alt="Third slide"
           />
 
@@ -25,7 +25,7 @@ const Home = () => {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src="http://localhost:5000/images/fitness3.png"
+            src="api/images/fitness3.png"
             alt="Third slide"
           />
 

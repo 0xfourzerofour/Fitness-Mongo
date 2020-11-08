@@ -30,7 +30,7 @@ export default class SessionAppend extends Component {
 
   handleAddWorkout = () => {
     Axios.put(
-      'http://localhost:5000/session/append',
+      'api/session/append',
       {
         date: this.props.date,
         workout: {

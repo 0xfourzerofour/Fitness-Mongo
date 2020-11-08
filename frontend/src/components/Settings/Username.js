@@ -19,7 +19,7 @@ export default function Username() {
 
   const changeUsername = (e) => {
     e.preventDefault(); 
-    Axios.patch('http://localhost:5000/users/updateusername', {
+    Axios.patch('api/users/updateusername', {
       username
     }, {
       headers: {

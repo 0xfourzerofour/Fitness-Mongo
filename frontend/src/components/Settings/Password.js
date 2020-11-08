@@ -18,7 +18,7 @@ export default function Password() {
 
   const changepassword = (e) => {
     e.preventDefault(); 
-    Axios.patch('http://localhost:5000/users/updatepassword', {
+    Axios.patch('api/users/updatepassword', {
       password
     }, {
       headers: {

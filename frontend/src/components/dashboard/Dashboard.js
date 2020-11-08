@@ -20,7 +20,7 @@ class Dashboard extends React.Component {
   }
 
   componentDidMount() {
-    Axios.get('http://localhost:5000/session/usersessions', {
+    Axios.get('api/session/usersessions', {
       headers: {
         'auth-token': this.context.userData.token,
       },
@@ -32,7 +32,7 @@ class Dashboard extends React.Component {
   }
 
   reload = () => {
-    Axios.get('http://localhost:5000/session/usersessions', {
+    Axios.get('api/session/usersessions', {
       headers: {
         'auth-token': this.context.userData.token,
       },

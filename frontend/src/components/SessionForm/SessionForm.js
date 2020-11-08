@@ -59,7 +59,7 @@ export default class SessionForm extends Component {
 
   postWorkout() {
     Axios.post(
-      'http://localhost:5000/session/new',
+      'api/session/new',
       {
         workout: this.state.workout,
         date: this.props.date,

@@ -28,7 +28,7 @@ export default function Image() {
 
     console.log(fd)
 
-    Axios.patch('http://localhost:5000/users/updateavatar', 
+    Axios.patch('api/users/updateavatar', 
       fd
     , {
       headers: {

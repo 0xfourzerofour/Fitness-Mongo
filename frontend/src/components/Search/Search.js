@@ -23,7 +23,7 @@ export default class Settings extends Component {
 
 
   allUsers = () => {
-    Axios.get('http://localhost:5000/users/searchall', {
+    Axios.get('api/users/searchall', {
       headers: {
         'auth-token': localStorage.getItem("auth-token")
       }
@@ -39,7 +39,7 @@ export default class Settings extends Component {
 
   searchUsers = (e) => {
     e.preventDefault();
-    Axios.post('http://localhost:5000/users/search',{
+    Axios.post('api/users/search',{
       searchString: this.state.search
     }, {
       headers: {
@@ -82,7 +82,7 @@ export default class Settings extends Component {
 
   <ListGroup variant="flush">
     {this.state.users.map(user => {
-      return <ListGroup.Item><Image style={{width: 50}} roundedCircle src={`http://localhost:5000/${user.imageUrl}`}/> <b>{user.username} </b> - {user.sessions} workouts Logged since {user.createdAt.split("T")[0]}</ListGroup.Item>
+      return <ListGroup.Item><Image style={{width: 50}} roundedCircle src={`api/${user.imageUrl}`}/> <b>{user.username} </b> - {user.sessions} workouts Logged since {user.createdAt.split("T")[0]}</ListGroup.Item>
     })}
   
 </ListGroup>
