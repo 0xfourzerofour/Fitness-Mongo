@@ -30,21 +30,25 @@ Users can:
     │   ├───models              # Contains the models for data stored using MongoDB
     │   ├───routes              # Contains the routes for the backend to handle API requests
     │   └───server.js           # Server file containing 
-    └───frontend
-        └───src
-            ├───components      # Contains the React components used in the application
-            ├───Context         # Contains the context state initialisation
-            └───services        # Contains axios requests to the backend and token storing
+    ├───frontend
+    │   └───src
+    │       ├───components      # Contains the React components used in the application
+    │       ├───Context         # Contains the context state initialisation
+    │       └───services        # Contains axios requests to the backend and token storing
+    └───screenshots             # Contains a video and README describing the application
             
 ## Future Work
-A summary of what your next steps would be if you were to continue the project
+If we were to continue the project, we would add:
+* Tests to test the front-end, the back-end, and end-to-end communications.
+* The ability to view other users profiles and their workouts.
+* The ability to share workouts with other users.
 
 ## Roles and responsibilities
 ### Frontend
 > Julian and Swarnim
 
-Julian implemented view components including: the navigation bar, the chart view, the dashboard, the home page, The login and register forms (and the handling of data in these components), and helped with the implementation of the calendar. 
-Julian also created calls to the backend to post and get data, helped with implementing routes in the backend (specifically /session routes) and created this README.md containing information about the project.
+Julian implemented view components including: the navigation bar, the chart view of progress, the dashboard, the home page, The login and register forms (and the handling of data in these components), and helped with the implementation of the calendar. 
+Julian also created calls to the backend to post and get data, helped with implementing routes in the backend (specifically /session routes), created this README.md containing information about the project, and created the demo video and description of the project.
 
 Swarnim completed the documentation for the project (seen below).
 
