@@ -43,17 +43,17 @@ A summary of what your next steps would be if you were to continue the project
 ### Frontend
 > Julian and Swarnim
 
-Julian implemented view components including: the navigation bar, the chart view, the dashboard, and the home page. 
-Julian also created calls to the backend to post and get data, and created this README.md.
+Julian implemented view components including: the navigation bar, the chart view, the dashboard, the home page, The login and register forms (and the handling of data in these components), and helped with the implementation of the calendar. 
+Julian also created calls to the backend to post and get data, helped with implementing routes in the backend (specifically /session routes) and created this README.md containing information about the project.
 
-Swarnim completed the documentation for the project.
+Swarnim completed the documentation for the project (seen below).
 
 ### Backend
 > Joshua and Brian
 
 Joshua implemented API routes/Middleware, Database Schema, Applicaiton Deployment and helped with the frontend of the site. For the API routes and Midleware, Joshua created the /Auth, /Session, /Users routes and the corresponding 'Verify' Middleware function to protect the routes. The Database schema was decided as a group and Joshua imlpemented it into the application. Joshua Set up a CI-CD implementation with deployment using github actions that automatically creates a build of the applicaiton when the master branch is updated (Read more in Deployment.md). Joshua also assisted with creating the frontend of the site by imlementing the App, Search, Settings, Username, Password, Image, About, Card, InfoCard, SessionForm, SessionAppend, Calender components and helped with the Dashboard & Home components.   
 
-Brian...
+Brian I worked on helping Josh to implement the backend of the project. I also tried to work on a Chart.js schema that would display what the persons progress was in terms of a chart. This had to do somewhat with the frontend of the application. 
 ### Database
 > All members
 
