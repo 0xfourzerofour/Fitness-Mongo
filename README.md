@@ -68,7 +68,7 @@ used for daily communcication including updates, and Zoom being used for weekly 
 **Integration** 
  
 **Frontend integration** 
->>>>>>> ac47c1c0c0e4501361799b69a46a0977a497ea52
+
 Visually the website shows a calender on the landing page and prompts the user to log in before conitnuing their exploration of the website. If the user is new, registering for the website is recommended. A dashboard with a navigation bar is shown with the user name and avatar once the user is logged in. The user can then choose a date for themselves to add the corresponding workout. Dates with an already added workout session have a different appearance so the users can keep easy track of the days they worked out.
 
 
