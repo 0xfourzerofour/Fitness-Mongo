@@ -65,16 +65,12 @@ used for daily communcication including updates, and Zoom being used for weekly 
 
 # Documentation
 
-**Integration**
-
-**Frontend integration**
-=======
-Visually the website shows a calender on the landing page and prompts the user to log in before conitnuing their exploration of the website. If the user is new, registering for the website is recommended. A dashboard with a navigation bar is shown with the user name and avatar once the user is logged in. The user can then choose a date for themselves to add the corresponding workout. Dates with an already added workout session have a different appearance so the users can keep easy track of the days they worked out.
-
 **Integration** 
  
 **Frontend integration** 
 >>>>>>> ac47c1c0c0e4501361799b69a46a0977a497ea52
+Visually the website shows a calender on the landing page and prompts the user to log in before conitnuing their exploration of the website. If the user is new, registering for the website is recommended. A dashboard with a navigation bar is shown with the user name and avatar once the user is logged in. The user can then choose a date for themselves to add the corresponding workout. Dates with an already added workout session have a different appearance so the users can keep easy track of the days they worked out.
+
 
 Frontend integration involves the forms and services which the user can view and access on the website. One of the main aims of the website is for the user to keep track of their workouts, thus, a calendar will be visible on the landing page. A feature with which the user can add exercises, reps, sets for each day is provided.
 
