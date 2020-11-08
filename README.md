@@ -43,10 +43,10 @@ A summary of what your next steps would be if you were to continue the project
 ### Frontend
 > Julian and Swarnim
 
-Julian implemented view components including: the navigation bar, the chart view, the dashboard, and the home page. 
-Julian also created calls to the backend to post and get data, and created this README.md.
+Julian implemented view components including: the navigation bar, the chart view, the dashboard, the home page, The login and register forms (and the handling of data in these components), and helped with the implementation of the calendar. 
+Julian also created calls to the backend to post and get data, helped with implementing routes in the backend (specifically /session routes) and created this README.md containing information about the project.
 
-Swarnim completed the documentation for the project.
+Swarnim completed the documentation for the project (seen below).
 
 ### Backend
 > Joshua and Brian
