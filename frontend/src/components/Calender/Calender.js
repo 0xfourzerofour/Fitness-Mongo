@@ -10,7 +10,7 @@ import {
   TableRow,
 } from 'grommet'
 
-import {Alert} from 'react-bootstrap';
+import { Alert } from 'react-bootstrap'
 
 import SessionForm from '../SessionForm/SessionForm'
 import SessionAppend from '../SessionAppend/SessionAppend'
@@ -154,19 +154,19 @@ class Calender extends React.Component {
           chartExerciseData={this.state.chartExerciseData}
         />
         <div>
-     
           <Cal
-          fill
+            fill
             date={this.state.date}
             onSelect={this.dataChange}
             style={{ margin: '0 auto' }}
           />
-          {
-            this.state.session.length >= 1 ?  <Alert style={{marginTop: 10}} variant="primary" >
-            click on the exercise name to view analytics!
-           </Alert> : <div/>
-          }
-         
+          {this.state.session.length >= 1 ? (
+            <Alert style={{ marginTop: 10 }} variant="primary">
+              click on the exercise name to view analytics!
+            </Alert>
+          ) : (
+            <div />
+          )}
 
           <Table>
             {this.state.session.length >= 1 ? (

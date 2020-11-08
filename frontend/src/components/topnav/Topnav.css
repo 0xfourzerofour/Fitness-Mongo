@@ -5,7 +5,10 @@
   color: white;
   text-decoration: none;
 }
-
 .navlink {
   color: white;
+}
+.navlink:hover {
+  color: white;
+  text-decoration: none;
 }
