@@ -1,3 +1,7 @@
+# Original Repository 
+
+https://github.com/joshpauline/GroupAss-COMP3100/
+
 # Fit - A fitness web app
 
 ## Outline
